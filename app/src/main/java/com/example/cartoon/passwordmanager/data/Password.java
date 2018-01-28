@@ -1,6 +1,6 @@
 package com.example.cartoon.passwordmanager.data;
 
-import org.litepal.crud.DataSupport;
+
 
 /**
  * Created by cartoon on 2018/1/27.
