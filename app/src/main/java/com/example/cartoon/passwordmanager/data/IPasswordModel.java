@@ -1,6 +1,7 @@
 package com.example.cartoon.passwordmanager.data;
 
 import com.example.cartoon.passwordmanager.ValueCallBack;
+import com.example.cartoon.passwordmanager.data.Password;
 
 import java.util.List;
 
@@ -9,6 +10,6 @@ import java.util.List;
  */
 
 public interface IPasswordModel {
-    void getAdapterData(ValueCallBack<List<Password>> callBack);
+    void getAdapterData(ValueCallBack.PasswordListCallBack<List<Password>> callBack);
     List<Password> getAdapterData();
 }

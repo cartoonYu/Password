@@ -2,6 +2,7 @@ package com.example.cartoon.passwordmanager.Main;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +27,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     }
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView name;
-        public ViewHolder(View convertView)
-        {
+        public ViewHolder(View convertView) {
             super(convertView);
             name = (TextView) convertView.findViewById(R.id.mainPasswordDescription);
         }

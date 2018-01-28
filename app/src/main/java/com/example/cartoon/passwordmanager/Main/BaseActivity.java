@@ -1,9 +1,9 @@
-package com.example.cartoon.passwordmanager;
+package com.example.cartoon.passwordmanager.Main;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.example.cartoon.passwordmanager.BasePresenter;
+import com.example.cartoon.passwordmanager.Main.BasePresenter;
 
 /**
  * Created by cartoon on 2018/1/27.

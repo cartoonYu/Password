@@ -4,14 +4,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import com.example.cartoon.passwordmanager.BaseActivity;
 import com.example.cartoon.passwordmanager.R;
 
 /**
  * Created by cartoon on 2018/1/27.
  */
 
-public class Main extends BaseActivity<MainPresenter> implements IMainView{
+public class Main extends BaseActivity<MainPresenter> implements IMain.View{
     private RecyclerView recyclerView;
     private MainAdapter adapter;
     private LinearLayoutManager manager;
@@ -33,6 +32,7 @@ public class Main extends BaseActivity<MainPresenter> implements IMainView{
         manager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
+        basePresenter.initData();
     }
     @Override
     public void showToast(String msg){
