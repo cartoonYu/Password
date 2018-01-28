@@ -1,5 +1,7 @@
 package com.example.cartoon.passwordmanager.data;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.util.Log;
 
@@ -16,8 +18,11 @@ import java.util.List;
 
 public class PasswordModel implements IPasswordModel {
     private List<Password> listData;
+    private SQLiteDatabase db;
     public PasswordModel(){
         this.listData=new ArrayList<>();
+        this.db= SQLiteDatabase.openOrCreateDatabase
+                ("/data/data/com.example.cartoon.passwordmanager/databases/PasswordManager.db",null);
     }
     @Override
     public void getAdapterData(final ValueCallBack.PasswordListCallBack<List<Password>> callBack){
@@ -25,10 +30,20 @@ public class PasswordModel implements IPasswordModel {
             @Override
             public void run() {
                 List<Password> passwords=new ArrayList<>();
-                passwords.add(new Password("cartoon","12345","12345"));
-                passwords.add(new Password("cartoon","12345","12345"));
-                passwords.add(new Password("cartoon","12345","12345"));
-                Log.d("asdf",""+passwords.size());
+                Cursor cursor=db.query
+                        ("Password",
+                                null,null,null,null,null,null);
+
+                if(cursor.moveToFirst()){
+                    do{
+                        Password password=new Password(
+                                cursor.getString(cursor.getColumnIndex("name")),
+                                cursor.getString(cursor.getColumnIndex("account")),
+                                cursor.getString(cursor.getColumnIndex("password")));
+                        passwords.add(password);
+                    }while (cursor.moveToNext());
+                }
+                cursor.close();
                 if(passwords.isEmpty()){
                     callBack.onFail("没有数据存在");
                 }
