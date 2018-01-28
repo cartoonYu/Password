@@ -1,8 +1,0 @@
-<litepal>
-    <dbname value="PasswordManager"></dbname>
-    <version value="1"></version>
-    <list>
-        <mapping class="com.cartoon.passwordmanager.data.PersonalInformation"></mapping>
-        <mapping class="com.cartoon.passwordmanager.data.Password"></mapping>
-    </list>
-</litepal>
