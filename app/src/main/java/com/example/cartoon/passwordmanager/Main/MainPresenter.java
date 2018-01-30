@@ -2,9 +2,9 @@ package com.example.cartoon.passwordmanager.Main;
 
 import com.example.cartoon.passwordmanager.BasePresenter;
 import com.example.cartoon.passwordmanager.ValueCallBack;
+import com.example.cartoon.passwordmanager.data.GetPasswordModel;
 import com.example.cartoon.passwordmanager.data.IPasswordModel;
 import com.example.cartoon.passwordmanager.data.Password;
-import com.example.cartoon.passwordmanager.data.PasswordModel;
 
 import java.util.List;
 
@@ -12,12 +12,12 @@ import java.util.List;
  * Created by cartoon on 2018/1/27.
  */
 
-public class MainPresenter extends BasePresenter<Main> implements IMain.Presenter{
-    private IMain.View view;
-    private IPasswordModel model;
-    public MainPresenter(IMain.View view){
+public class MainPresenter extends BasePresenter<Main> implements IMainContract.Presenter{
+    private IMainContract.View view;
+    private IPasswordModel.getPasswordModel model;
+    public MainPresenter(IMainContract.View view){
         this.view=view;
-        this.model=new PasswordModel();
+        this.model=new GetPasswordModel();
     }
     @Override
     public List<Password> getAdapterData(){

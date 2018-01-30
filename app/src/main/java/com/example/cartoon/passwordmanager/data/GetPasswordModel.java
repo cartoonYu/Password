@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.util.Log;
 
 import com.example.cartoon.passwordmanager.ValueCallBack;
-import com.example.cartoon.passwordmanager.data.IPasswordModel;
 import com.example.cartoon.passwordmanager.data.Password;
 
 import java.util.ArrayList;
@@ -16,10 +15,10 @@ import java.util.List;
  * Created by cartoon on 2018/1/27.
  */
 
-public class PasswordModel implements IPasswordModel {
+public class GetPasswordModel implements IPasswordModel.getPasswordModel {
     private List<Password> listData;
     private SQLiteDatabase db;
-    public PasswordModel(){
+    public GetPasswordModel(){
         this.listData=new ArrayList<>();
         this.db= SQLiteDatabase.openOrCreateDatabase
                 ("/data/data/com.example.cartoon.passwordmanager/databases/PasswordManager.db",null);
@@ -33,7 +32,6 @@ public class PasswordModel implements IPasswordModel {
                 Cursor cursor=db.query
                         ("Password",
                                 null,null,null,null,null,null);
-
                 if(cursor.moveToFirst()){
                     do{
                         Password password=new Password(
@@ -44,6 +42,9 @@ public class PasswordModel implements IPasswordModel {
                     }while (cursor.moveToNext());
                 }
                 cursor.close();
+                for(Password password:passwords){
+                    Log.d("1234",password.getName());
+                }
                 if(passwords.isEmpty()){
                     callBack.onFail("没有数据存在");
                 }
@@ -57,4 +58,5 @@ public class PasswordModel implements IPasswordModel {
     public List<Password> getAdapterData(){
         return listData;
     }
+
 }

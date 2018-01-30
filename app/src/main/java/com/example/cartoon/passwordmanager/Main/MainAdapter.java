@@ -2,11 +2,9 @@ package com.example.cartoon.passwordmanager.Main;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.cartoon.passwordmanager.R;
@@ -36,6 +34,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     public ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType){
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.mainpassword_item,parent,false);
         final ViewHolder holder=new ViewHolder(view);
+        holder.name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         return holder;
     }
     @Override

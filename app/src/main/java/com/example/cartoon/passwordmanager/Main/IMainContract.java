@@ -8,7 +8,7 @@ import java.util.List;
  * Created by cartoon on 2018/1/28.
  */
 
-public interface IMain {
+public interface IMainContract {
     interface Presenter {
         List<Password> getAdapterData();
     }
