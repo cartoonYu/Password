@@ -1,6 +1,6 @@
 package com.example.cartoon.passwordmanager.Main;
 
-import com.example.cartoon.passwordmanager.data.Password;
+import com.example.cartoon.passwordmanager.data.TablePassword.Password;
 
 import java.util.List;
 

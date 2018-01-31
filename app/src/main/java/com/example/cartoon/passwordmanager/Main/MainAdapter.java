@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.cartoon.passwordmanager.R;
-import com.example.cartoon.passwordmanager.data.Password;
+import com.example.cartoon.passwordmanager.data.TablePassword.Password;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     private Context context;
     public MainAdapter(Context context,List<Password> passwords){
         this.context=context;
-        this.passwords=passwords;
+        this.passwords = passwords;
     }
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView name;
@@ -44,7 +44,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     }
     @Override
     public void onBindViewHolder(ViewHolder holder,int position){
-        Password password=passwords.get(position);
+        Password password = passwords.get(position);
         holder.name.setText(password.getName());
     }
     @Override

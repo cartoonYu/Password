@@ -2,9 +2,9 @@ package com.example.cartoon.passwordmanager.Main;
 
 import com.example.cartoon.passwordmanager.BasePresenter;
 import com.example.cartoon.passwordmanager.ValueCallBack;
-import com.example.cartoon.passwordmanager.data.GetPasswordModel;
-import com.example.cartoon.passwordmanager.data.IPasswordModel;
-import com.example.cartoon.passwordmanager.data.Password;
+import com.example.cartoon.passwordmanager.data.TablePassword.GetPasswordModel;
+import com.example.cartoon.passwordmanager.data.TablePassword.IPassword;
+import com.example.cartoon.passwordmanager.data.TablePassword.Password;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class MainPresenter extends BasePresenter<Main> implements IMainContract.Presenter{
     private IMainContract.View view;
-    private IPasswordModel.getPasswordModel model;
+    private IPassword.getPasswordModel model;
     public MainPresenter(IMainContract.View view){
         this.view=view;
         this.model=new GetPasswordModel();

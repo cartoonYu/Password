@@ -3,15 +3,11 @@ package com.example.cartoon.passwordmanager.AddPassword;
 import com.example.cartoon.passwordmanager.BaseActivity;
 import com.example.cartoon.passwordmanager.Main.Main;
 import com.example.cartoon.passwordmanager.R;
-import com.example.cartoon.passwordmanager.data.Password;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 /**
@@ -69,12 +65,6 @@ public class AddPassword extends BaseActivity<AddPasswordPresenter> implements I
         back.setOnClickListener(this);
         confirm.setOnClickListener(this);
     }
-
-    @Override
-    public void onEmpty() {
-
-    }
-
     @Override
     public void onClick(View view) {
         switch (view.getId()){

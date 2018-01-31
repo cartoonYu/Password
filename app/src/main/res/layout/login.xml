@@ -21,7 +21,7 @@
         android:layout_weight="1"
         android:orientation="horizontal"
         android:background="#FFFFFF">
-        <TextView
+        <ImageView
             android:id="@+id/loginPassword1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -31,7 +31,7 @@
             android:layout_weight="1"
             android:gravity="center" />
 
-        <TextView
+        <ImageView
             android:id="@+id/loginPassword2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -40,7 +40,7 @@
             android:layout_weight="1"
             android:gravity="center" />
 
-        <TextView
+        <ImageView
             android:id="@+id/loginPassword3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -49,7 +49,7 @@
             android:layout_weight="1"
             android:gravity="center" />
 
-        <TextView
+        <ImageView
             android:id="@+id/loginPassword4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -58,7 +58,7 @@
             android:layout_weight="1"
             android:gravity="center" />
 
-        <TextView
+        <ImageView
             android:id="@+id/loginPassword5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -67,7 +67,7 @@
             android:layout_weight="1"
             android:gravity="center" />
 
-        <TextView
+        <ImageView
             android:id="@+id/loginPassword6"
             android:layout_width="0dp"
             android:layout_height="match_parent"

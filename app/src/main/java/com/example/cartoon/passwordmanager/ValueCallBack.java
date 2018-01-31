@@ -5,6 +5,10 @@ package com.example.cartoon.passwordmanager;
  */
 
 public interface ValueCallBack{
+    interface loginCallBack{
+        void onSuccess(String code);
+        void onFail(String code);
+    }
     interface PasswordListCallBack<T>{
         void onSuccess(T t);
         void onFail(String code);

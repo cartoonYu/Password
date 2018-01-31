@@ -1,7 +1,5 @@
 package com.example.cartoon.passwordmanager.AddPassword;
 
-import com.example.cartoon.passwordmanager.data.Password;
-
 /**
  * Created by cartoon on 2018/1/29.
  */
@@ -9,7 +7,6 @@ import com.example.cartoon.passwordmanager.data.Password;
 public interface IAddPasswordContract {
     interface View{
         void showToast(String code);
-        void onEmpty();
         String getInputDecription();
         String getInputAccount();
         String getInputPassword();

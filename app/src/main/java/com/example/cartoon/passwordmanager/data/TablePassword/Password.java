@@ -1,4 +1,4 @@
-package com.example.cartoon.passwordmanager.data;
+package com.example.cartoon.passwordmanager.data.TablePassword;
 
 
 
@@ -6,11 +6,11 @@ package com.example.cartoon.passwordmanager.data;
  * Created by cartoon on 2018/1/27.
  */
 
-public class Password{
+public class Password {
     private String name;
     private String account;
     private String password;
-    public Password(String name,String account,String password){
+    public Password(String name, String account, String password){
         this.name=name;
         this.account=account;
         this.password=password;
