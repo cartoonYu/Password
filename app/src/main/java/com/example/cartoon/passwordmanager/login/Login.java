@@ -1,14 +1,15 @@
 package com.example.cartoon.passwordmanager.login;
 
-import android.util.Log;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cartoon.passwordmanager.BaseActivity;
+import com.example.cartoon.passwordmanager.Main.Main;
 import com.example.cartoon.passwordmanager.R;
+import com.example.cartoon.passwordmanager.Register.Register;
 
 /**
  * Created by cartoon on 2018/1/31.
@@ -74,6 +75,7 @@ public class Login extends BaseActivity<LoginPresenter> implements ILoginContrac
             }
             case R.id.loginInputPassword2:{
                 handleClick("2");
+                break;
             }
             case R.id.loginInputPassword3:{
                 handleClick("3");
@@ -114,18 +116,36 @@ public class Login extends BaseActivity<LoginPresenter> implements ILoginContrac
         }
     }
     private void handleClick(String password){
-        if(password.equals("-2")){
-
-        }
-        else {
+        Intent intent;
+        if(!password.equals("-2")){
             basePresenter.getDataFromView(password);
             flag=basePresenter.changeView();
             for(int i=0;i<6;i++){
                 passwordForShow[i].setImageResource(0);
             }
-            Log.d("asdf",""+flag);
             for(int i=0;i<flag;i++){
                 passwordForShow[i].setImageResource(R.drawable.password);
+            }
+        }
+        switch (basePresenter.intentView()){
+            case 1:{
+                intent=new Intent(this, Register.class);
+                intent.putExtra("passwordFromLogin",basePresenter.returnPassword());
+                startActivity(intent);
+                finish();
+                break;
+            }
+            case 2:{
+                intent=new Intent(this, Main.class);
+                startActivity(intent);
+                finish();
+                break;
+            }
+            case 3:{
+                break;
+            }
+            default:{
+                break;
             }
         }
     }

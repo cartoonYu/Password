@@ -12,5 +12,7 @@ public interface ILoginContract {
         void contrastInformation();
         void getDataFromView(String password);
         int changeView();
+        int intentView();
+        String returnPassword();
     }
 }

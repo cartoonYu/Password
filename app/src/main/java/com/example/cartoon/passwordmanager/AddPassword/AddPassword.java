@@ -88,5 +88,10 @@ public class AddPassword extends BaseActivity<AddPasswordPresenter> implements I
     public void showToast(String code) {
         Toast.makeText(this,code,Toast.LENGTH_SHORT).show();
     }
-
+    @Override
+    public void onBackPressed(){
+        Intent intent=new Intent(this,Main.class);
+        startActivity(intent);
+        finish();
+    }
 }

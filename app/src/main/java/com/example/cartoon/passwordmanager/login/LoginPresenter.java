@@ -1,7 +1,5 @@
 package com.example.cartoon.passwordmanager.login;
 
-import android.os.Build;
-import android.util.Log;
 
 import com.example.cartoon.passwordmanager.BasePresenter;
 import com.example.cartoon.passwordmanager.ValueCallBack;
@@ -42,26 +40,37 @@ public class LoginPresenter extends BasePresenter<Login> implements ILoginContra
                 view.showToast(code);
             }
         });
-        int flag=model.getState();
-        Log.d("1234",""+flag);
     }
     @Override
     public void getDataFromView(String password){
-        if(password.equals("-1")){
+        if(password.equals("-1")&&this.password.length()!=0){
             this.password=this.password.substring(0,this.password.length()-1);
         }
         else{
-            this.password=this.password+password;
+            if(password.equals("-1")&&this.password.length()==0){
+
+            }
+            else{
+                this.password=this.password+password;
+            }
+
         }
         flag=this.password.length();
-
         if(flag==6){
-            contrastInformation();
             flag=0;
+            contrastInformation();
         }
     }
     @Override
     public int changeView(){
         return flag;
+    }
+    @Override
+    public int intentView() {
+        return model.getState();
+    }
+    @Override
+    public String returnPassword(){
+        return this.password;
     }
 }

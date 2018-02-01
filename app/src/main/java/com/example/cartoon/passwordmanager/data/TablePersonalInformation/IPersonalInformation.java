@@ -8,6 +8,9 @@ import com.example.cartoon.passwordmanager.ValueCallBack;
 
 public interface IPersonalInformation {
     void setInformation(String password,String question,String answer);
+    void getList();
+    void addInformation(ValueCallBack.registerCallBack callBack);
+    void revampInformation();
     void contrastInformation(ValueCallBack.loginCallBack callBack);
     int getState();
 }

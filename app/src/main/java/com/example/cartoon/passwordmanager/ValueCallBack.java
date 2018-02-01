@@ -9,6 +9,10 @@ public interface ValueCallBack{
         void onSuccess(String code);
         void onFail(String code);
     }
+    interface registerCallBack{
+        void onSuccess(String code);
+        void onFail(String code);
+    }
     interface PasswordListCallBack<T>{
         void onSuccess(T t);
         void onFail(String code);

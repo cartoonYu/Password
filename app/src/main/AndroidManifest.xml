@@ -10,14 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Main.Main">
+
+        </activity>
+        <activity android:name=".AddPassword.AddPassword"></activity>
+        <activity android:name=".login.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".AddPassword.AddPassword"></activity>
-        <activity android:name=".login.Login">
-
-        </activity>
+        <activity android:name=".Register.Register"/>
     </application>
 </manifest>
