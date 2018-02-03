@@ -1,6 +1,7 @@
 package com.example.cartoon.passwordmanager.login;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -10,6 +11,7 @@ import com.example.cartoon.passwordmanager.BaseActivity;
 import com.example.cartoon.passwordmanager.Main.Main;
 import com.example.cartoon.passwordmanager.R;
 import com.example.cartoon.passwordmanager.Register.Register;
+import com.example.cartoon.passwordmanager.data.MyDatabaseHelper;
 
 /**
  * Created by cartoon on 2018/1/31.
@@ -51,6 +53,8 @@ public class Login extends BaseActivity<LoginPresenter> implements ILoginContrac
         inputPassword[9]=(Button)findViewById(R.id.loginInputPassword9);
         inputPassword[10]=(Button)findViewById(R.id.loginInputPasswordForgetPassword);
         inputPassword[11]=(Button)findViewById(R.id.loginInputPasswordDeletePassword);
+        MyDatabaseHelper helper=new MyDatabaseHelper(this,"PasswordManager.db",null,1);
+        helper.getWritableDatabase();
     }
     @Override
     protected void onPrepare(){
@@ -131,6 +135,7 @@ public class Login extends BaseActivity<LoginPresenter> implements ILoginContrac
             case 1:{
                 intent=new Intent(this, Register.class);
                 intent.putExtra("passwordFromLogin",basePresenter.returnPassword());
+                Log.d("asdf",basePresenter.returnPassword());
                 startActivity(intent);
                 finish();
                 break;

@@ -3,6 +3,7 @@ package com.example.cartoon.passwordmanager.login;
 
 import com.example.cartoon.passwordmanager.BasePresenter;
 import com.example.cartoon.passwordmanager.ValueCallBack;
+import com.example.cartoon.passwordmanager.data.MyDatabaseHelper;
 import com.example.cartoon.passwordmanager.data.TablePersonalInformation.HandleInformationModel;
 import com.example.cartoon.passwordmanager.data.TablePersonalInformation.IPersonalInformation;
 
@@ -43,6 +44,7 @@ public class LoginPresenter extends BasePresenter<Login> implements ILoginContra
     }
     @Override
     public void getDataFromView(String password){
+
         if(password.equals("-1")&&this.password.length()!=0){
             this.password=this.password.substring(0,this.password.length()-1);
         }

@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 
 import com.example.cartoon.passwordmanager.ValueCallBack;
+import com.example.cartoon.passwordmanager.data.MyDatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,18 +94,17 @@ public class HandleInformationModel implements IPersonalInformation{
             callBack.onFail("你所填写的信息不全");
         }
         else{
-            new Handler().post(new Runnable() {
-                @Override
-                public void run() {
-                    ContentValues values=new ContentValues();
-                    values.put("password",information.getPassword());
-                    values.put("question",information.getQuestion());
-                    values.put("answer",information.getAnswer());
-                    db.insert("PersonalInformation",null,values);
-                }
-            });
             callBack.onSuccess("注册成功");
         }
-
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                ContentValues values=new ContentValues();
+                values.put("password",information.getPassword());
+                values.put("question",information.getQuestion());
+                values.put("answer",information.getAnswer());
+                db.insert("PersonalInformation",null,values);
+            }
+        });
     }
 }
