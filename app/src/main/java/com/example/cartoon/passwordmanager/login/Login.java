@@ -11,6 +11,7 @@ import com.example.cartoon.passwordmanager.BaseActivity;
 import com.example.cartoon.passwordmanager.Main.Main;
 import com.example.cartoon.passwordmanager.R;
 import com.example.cartoon.passwordmanager.Register.Register;
+import com.example.cartoon.passwordmanager.RevampPassword.RevampPassword;
 import com.example.cartoon.passwordmanager.data.MyDatabaseHelper;
 
 /**
@@ -131,11 +132,16 @@ public class Login extends BaseActivity<LoginPresenter> implements ILoginContrac
                 passwordForShow[i].setImageResource(R.drawable.password);
             }
         }
+        else{
+            intent=new Intent(this, RevampPassword.class);
+            intent.putExtra("flag",0);
+            startActivity(intent);
+            finish();
+        }
         switch (basePresenter.intentView()){
             case 1:{
                 intent=new Intent(this, Register.class);
                 intent.putExtra("passwordFromLogin",basePresenter.returnPassword());
-                Log.d("asdf",basePresenter.returnPassword());
                 startActivity(intent);
                 finish();
                 break;

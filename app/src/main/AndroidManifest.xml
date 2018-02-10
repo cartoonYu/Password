@@ -20,5 +20,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Register.Register"/>
+        <activity android:name=".RevampPassword.RevampPassword"/>
     </application>
 </manifest>

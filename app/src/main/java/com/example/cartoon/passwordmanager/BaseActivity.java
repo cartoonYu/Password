@@ -13,8 +13,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends Activity{
     public void onCreate(Bundle bundle){
         super.onCreate(bundle);
         setContentView(getLayout());
-        initView();
         basePresenter=initPresent();
+        initView();
         onPrepare();
     }
     protected abstract T initPresent();

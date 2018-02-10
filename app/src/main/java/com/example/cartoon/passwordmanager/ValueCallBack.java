@@ -4,7 +4,9 @@ package com.example.cartoon.passwordmanager;
  * Created by cartoon on 2018/1/27.
  */
 
-public interface ValueCallBack{
+public interface ValueCallBack<T>{
+    void onSuccess(T t);
+    void onFail(String code);
     interface loginCallBack{
         void onSuccess(String code);
         void onFail(String code);
@@ -19,6 +21,10 @@ public interface ValueCallBack{
     }
     interface addPasswordCallBack<T>{
         void onSuccess(String code);
+        void onFail(String code);
+    }
+    interface revampPassword<T>{
+        void onSuccess(T t);
         void onFail(String code);
     }
 }

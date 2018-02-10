@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.cartoon.passwordmanager.AddPassword.AddPassword;
 import com.example.cartoon.passwordmanager.BaseActivity;
 import com.example.cartoon.passwordmanager.R;
+import com.example.cartoon.passwordmanager.RevampPassword.RevampPassword;
 
 /**
  * Created by cartoon on 2018/1/27.
@@ -83,6 +84,10 @@ public class Main extends BaseActivity<MainPresenter> implements IMainContract.V
                 break;
             }
             case R.id.mainRevampPassword:{
+                Intent intent=new Intent(this, RevampPassword.class);
+                intent.putExtra("flag",1);
+                startActivity(intent);
+                finish();
                 break;
             }
         }
