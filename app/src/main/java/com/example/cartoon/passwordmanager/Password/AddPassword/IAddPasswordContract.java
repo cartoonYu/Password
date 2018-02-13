@@ -1,4 +1,4 @@
-package com.example.cartoon.passwordmanager.AddPassword;
+package com.example.cartoon.passwordmanager.Password.AddPassword;
 
 /**
  * Created by cartoon on 2018/1/29.

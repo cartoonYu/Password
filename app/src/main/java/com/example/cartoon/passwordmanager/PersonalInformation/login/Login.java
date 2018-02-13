@@ -1,17 +1,16 @@
-package com.example.cartoon.passwordmanager.login;
+package com.example.cartoon.passwordmanager.PersonalInformation.login;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.cartoon.passwordmanager.BaseActivity;
-import com.example.cartoon.passwordmanager.Main.Main;
+import com.example.cartoon.passwordmanager.Password.Main.Main;
 import com.example.cartoon.passwordmanager.R;
-import com.example.cartoon.passwordmanager.Register.Register;
-import com.example.cartoon.passwordmanager.RevampPassword.RevampPassword;
+import com.example.cartoon.passwordmanager.PersonalInformation.Register.Register;
+import com.example.cartoon.passwordmanager.PersonalInformation.RevampPassword.InformationRevampPassword;
 import com.example.cartoon.passwordmanager.data.MyDatabaseHelper;
 
 /**
@@ -133,7 +132,7 @@ public class Login extends BaseActivity<LoginPresenter> implements ILoginContrac
             }
         }
         else{
-            intent=new Intent(this, RevampPassword.class);
+            intent=new Intent(this, InformationRevampPassword.class);
             intent.putExtra("flag",0);
             startActivity(intent);
             finish();

@@ -65,4 +65,38 @@ public class HandleInformation implements IHandleInformation {
             callBack.onSuccess(temp);
         }
     }
+    @Override
+    public void handleRevampPassword(ValueCallBack<String> callBack){
+        informations=getInformation.getInformation();
+        PersonalInformation temp=new PersonalInformation
+                (informations.get(0).getPassword(),
+                        informations.get(0).getQuestion(),informations.get(0).getAnswer());
+        if(temp.getAnswer().equals(information.getAnswer())){
+            boolean flag=getInformation.updateInformation(information);
+            if(flag){
+                callBack.onSuccess("修改成功");
+            }
+            else{
+                callBack.onFail("修改失败，请重试");
+            }
+        }
+        else{
+            callBack.onFail("你输入问题的答案不正确，请重新输入");
+        }
+    }
+    @Override
+    public void handleRevampQuestion(ValueCallBack<String> callBack){
+        if(information.getQuestion().isEmpty()&&information.getAnswer().isEmpty()){
+            callBack.onFail("你没有输入任何东西");
+        }
+        else{
+            boolean flag=getInformation.updateInformation(information);
+            if(flag){
+                callBack.onSuccess("修改成功");
+            }
+            else{
+                callBack.onFail("修改失败，请重试");
+            }
+        }
+    }
 }

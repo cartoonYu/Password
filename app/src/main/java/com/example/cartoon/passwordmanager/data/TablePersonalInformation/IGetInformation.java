@@ -9,4 +9,5 @@ import java.util.List;
 interface IGetInformation {
     boolean addInformation(PersonalInformation information);
     List<PersonalInformation> getInformation();
+    boolean updateInformation(PersonalInformation information);
 }

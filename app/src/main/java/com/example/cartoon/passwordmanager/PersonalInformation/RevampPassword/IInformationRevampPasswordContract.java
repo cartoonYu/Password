@@ -1,4 +1,4 @@
-package com.example.cartoon.passwordmanager.RevampPassword;
+package com.example.cartoon.passwordmanager.PersonalInformation.RevampPassword;
 
 import com.example.cartoon.passwordmanager.data.TablePersonalInformation.PersonalInformation;
 
@@ -6,12 +6,15 @@ import com.example.cartoon.passwordmanager.data.TablePersonalInformation.Persona
  * Created by cartoon on 2018/2/3.
  */
 
-public interface IRevampPasswordContract {
+public interface IInformationRevampPasswordContract {
     interface View{
         void showToast(String code);
         void initView(PersonalInformation information);
+        String getAnswer();
+        String getPassword();
+        String getQuestion();
     }
     interface Presenter{
-
+        boolean getInput();
     }
 }

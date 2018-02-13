@@ -1,4 +1,4 @@
-package com.example.cartoon.passwordmanager.Register;
+package com.example.cartoon.passwordmanager.PersonalInformation.Register;
 
 import com.example.cartoon.passwordmanager.data.TablePersonalInformation.PersonalInformation;
 

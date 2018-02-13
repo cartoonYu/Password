@@ -1,4 +1,4 @@
-package com.example.cartoon.passwordmanager.Main;
+package com.example.cartoon.passwordmanager.Password.Main;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
@@ -10,10 +10,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.cartoon.passwordmanager.AddPassword.AddPassword;
+import com.example.cartoon.passwordmanager.Password.AddPassword.AddPassword;
 import com.example.cartoon.passwordmanager.BaseActivity;
 import com.example.cartoon.passwordmanager.R;
-import com.example.cartoon.passwordmanager.RevampPassword.RevampPassword;
+import com.example.cartoon.passwordmanager.PersonalInformation.RevampPassword.InformationRevampPassword;
+import com.example.cartoon.passwordmanager.PersonalInformation.RevampQuestion.InformationRevampQuestion;
+import com.example.cartoon.passwordmanager.util.Main.MainAdapter;
 
 /**
  * Created by cartoon on 2018/1/27.
@@ -81,10 +83,14 @@ public class Main extends BaseActivity<MainPresenter> implements IMainContract.V
                 break;
             }
             case R.id.mainRevampQuestion:{
+                Intent intent=new Intent(this, InformationRevampQuestion.class);
+                intent.putExtra("flag",1);
+                startActivity(intent);
+                finish();
                 break;
             }
             case R.id.mainRevampPassword:{
-                Intent intent=new Intent(this, RevampPassword.class);
+                Intent intent=new Intent(this, InformationRevampPassword.class);
                 intent.putExtra("flag",1);
                 startActivity(intent);
                 finish();

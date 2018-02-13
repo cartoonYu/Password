@@ -1,4 +1,4 @@
-package com.example.cartoon.passwordmanager.AddPassword;
+package com.example.cartoon.passwordmanager.Password.AddPassword;
 
 import com.example.cartoon.passwordmanager.BasePresenter;
 import com.example.cartoon.passwordmanager.ValueCallBack;

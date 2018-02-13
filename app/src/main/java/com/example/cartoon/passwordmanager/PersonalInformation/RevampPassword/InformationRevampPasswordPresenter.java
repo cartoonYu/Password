@@ -1,4 +1,4 @@
-package com.example.cartoon.passwordmanager.RevampPassword;
+package com.example.cartoon.passwordmanager.PersonalInformation.RevampPassword;
 
 import com.example.cartoon.passwordmanager.BasePresenter;
 import com.example.cartoon.passwordmanager.ValueCallBack;
@@ -10,11 +10,13 @@ import com.example.cartoon.passwordmanager.data.TablePersonalInformation.Persona
  * Created by cartoon on 2018/2/3.
  */
 
-public class RevampPasswordPresenter extends BasePresenter<RevampPassword> implements IRevampPasswordContract.Presenter{
-    private IRevampPasswordContract.View view;
+public class InformationRevampPasswordPresenter extends BasePresenter<InformationRevampPassword> implements IInformationRevampPasswordContract.Presenter{
+    private IInformationRevampPasswordContract.View view;
     private IHandleInformation model;
     private PersonalInformation information;
-    public RevampPasswordPresenter(IRevampPasswordContract.View view){
+
+    private boolean flag;
+    public InformationRevampPasswordPresenter(IInformationRevampPasswordContract.View view){
         this.view=view;
         this.model=new HandleInformation();
     }
@@ -30,5 +32,23 @@ public class RevampPasswordPresenter extends BasePresenter<RevampPassword> imple
                 view.showToast(code);
             }
         });
+    }
+    @Override
+    public boolean getInput(){
+        model.setInformation(view.getPassword(),view.getQuestion(),view.getAnswer());
+        model.handleRevampPassword(new ValueCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                view.showToast(s);
+                flag=true;
+            }
+
+            @Override
+            public void onFail(String code) {
+                view.showToast(code);
+                flag=false;
+            }
+        });
+        return flag;
     }
 }

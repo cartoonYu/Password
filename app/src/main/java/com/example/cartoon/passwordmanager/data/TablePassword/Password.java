@@ -1,12 +1,13 @@
 package com.example.cartoon.passwordmanager.data.TablePassword;
 
 
+import java.io.Serializable;
 
 /**
  * Created by cartoon on 2018/1/27.
  */
 
-public class Password {
+public class Password implements Serializable{
     private String name;
     private String account;
     private String password;

@@ -1,7 +1,7 @@
-package com.example.cartoon.passwordmanager.AddPassword;
+package com.example.cartoon.passwordmanager.Password.AddPassword;
 
 import com.example.cartoon.passwordmanager.BaseActivity;
-import com.example.cartoon.passwordmanager.Main.Main;
+import com.example.cartoon.passwordmanager.Password.Main.Main;
 import com.example.cartoon.passwordmanager.R;
 
 import android.content.Intent;

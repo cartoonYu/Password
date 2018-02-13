@@ -61,4 +61,28 @@ public class GetInformation implements IGetInformation{
         cursor.close();
         return list;
     }
+    @Override
+    public boolean updateInformation(PersonalInformation information){
+        if(information.getPassword().equals(null)&&
+                information.getQuestion().equals(null)&&
+                information.getAnswer().equals(null)){
+            return false;
+        }
+        else{
+            list=getInformation();
+            this.information=new PersonalInformation
+                    (list.get(0).getPassword(),list.get(0).getQuestion(),list.get(0).getAnswer());
+            ContentValues values=new ContentValues();
+            if(this.information.getQuestion().equals(information.getQuestion())){
+                values.put("password",information.getPassword());
+
+            }
+            else{
+                values.put("question",information.getQuestion());
+                values.put("answer",information.getAnswer());
+            }
+            db.update("PersonalInformation",values,"password=?",new String[]{this.information.getPassword()});
+            return true;
+        }
+    }
 }

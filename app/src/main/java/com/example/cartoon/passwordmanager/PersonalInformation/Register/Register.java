@@ -1,16 +1,15 @@
-package com.example.cartoon.passwordmanager.Register;
+package com.example.cartoon.passwordmanager.PersonalInformation.Register;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cartoon.passwordmanager.BaseActivity;
-import com.example.cartoon.passwordmanager.Main.Main;
+import com.example.cartoon.passwordmanager.Password.Main.Main;
 import com.example.cartoon.passwordmanager.R;
-import com.example.cartoon.passwordmanager.login.Login;
+import com.example.cartoon.passwordmanager.PersonalInformation.login.Login;
 
 /**
  * Created by cartoon on 2018/2/1.

@@ -1,4 +1,4 @@
-package com.example.cartoon.passwordmanager.RevampPassword;
+package com.example.cartoon.passwordmanager.PersonalInformation.RevampPassword;
 
 import android.content.Intent;
 import android.view.View;
@@ -7,32 +7,30 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cartoon.passwordmanager.BaseActivity;
-import com.example.cartoon.passwordmanager.Main.Main;
+import com.example.cartoon.passwordmanager.Password.Main.Main;
 import com.example.cartoon.passwordmanager.R;
 import com.example.cartoon.passwordmanager.data.TablePersonalInformation.PersonalInformation;
-import com.example.cartoon.passwordmanager.login.Login;
+import com.example.cartoon.passwordmanager.PersonalInformation.login.Login;
 
 /**
  * Created by cartoon on 2018/2/3.
  */
 
-public class RevampPassword extends BaseActivity<RevampPasswordPresenter>
-        implements IRevampPasswordContract.View, View.OnClickListener{
+public class InformationRevampPassword extends BaseActivity<InformationRevampPasswordPresenter>
+        implements IInformationRevampPasswordContract.View, View.OnClickListener{
     private TextView back;
     private TextView question;
     private EditText answer;
     private EditText password;
     private TextView confirm;
 
-    private String inputAnswer;
-    private String inputPassword;
 
     private Intent intent;     //用于接收上一页面携带的数据
     private int flag;           //用于存储上一页面携带的数据
 
     @Override
-    public RevampPasswordPresenter initPresent(){
-        return new RevampPasswordPresenter(this);
+    public InformationRevampPasswordPresenter initPresent(){
+        return new InformationRevampPasswordPresenter(this);
     }
     @Override
     public int getLayout(){
@@ -78,6 +76,22 @@ public class RevampPassword extends BaseActivity<RevampPasswordPresenter>
                 break;
             }
             case R.id.revampPasswordConfirm:{
+                boolean flag=basePresenter.getInput();
+                Intent intent;
+                if(flag){
+                    if(this.flag==0){
+                        intent=new Intent(this, Login.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else{
+                        if(this.flag==1){
+                            intent=new Intent(this, Main.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+                }
                 break;
             }
         }
@@ -101,5 +115,17 @@ public class RevampPassword extends BaseActivity<RevampPasswordPresenter>
     @Override
     public void initView(PersonalInformation information){
         this.question.setText(information.getQuestion());
+    }
+    @Override
+    public String getAnswer(){
+        return this.answer.getText().toString();
+    }
+    @Override
+    public String getPassword(){
+        return this.password.getText().toString();
+    }
+    @Override
+    public String getQuestion(){
+        return this.question.getText().toString();
     }
 }

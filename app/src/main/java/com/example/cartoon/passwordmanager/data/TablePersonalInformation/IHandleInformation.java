@@ -13,4 +13,6 @@ public interface IHandleInformation {
     void addInformation(ValueCallBack callBack);
     void getInformation(ValueCallBack<PersonalInformation> callBack);
     void handleLogin(ValueCallBack<String> callBack);
+    void handleRevampPassword(ValueCallBack<String> callBack);
+    void handleRevampQuestion(ValueCallBack<String> callBack);
 }
