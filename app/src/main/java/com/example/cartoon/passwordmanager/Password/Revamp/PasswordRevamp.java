@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.cartoon.passwordmanager.BaseActivity;
 import com.example.cartoon.passwordmanager.Password.Details.PasswordDetails;
@@ -64,9 +66,21 @@ public class PasswordRevamp extends BaseActivity<PasswordRevampPresenter>
                 break;
             }
             case R.id.toolbarTool1:{
+                boolean flag=basePresenter.getInput();
+                if(flag){
+                    passwordFromDetails=new Password(getName(),getAccount(),getPassword());
+                    intent=new Intent(this, PasswordDetails.class);
+                    intent.putExtra("data",passwordFromDetails);
+                    startActivity(intent);
+                    finish();
+                }
                 break;
             }
         }
+    }
+    @Override
+    public void showToast(String code){
+        Toast.makeText(this,code,Toast.LENGTH_SHORT).show();
     }
     @Override
     public void onBackPressed(){
@@ -74,5 +88,21 @@ public class PasswordRevamp extends BaseActivity<PasswordRevampPresenter>
         intent.putExtra("data",passwordFromDetails);
         startActivity(intent);
         finish();
+    }
+    @Override
+    public String getName(){
+        return this.name.getText().toString();
+    }
+    @Override
+    public String getAccount(){
+        return this.account.getText().toString();
+    }
+    @Override
+    public String getPassword(){
+        return this.password.getText().toString();
+    }
+    @Override
+    public Password getOldPPassword(){
+        return passwordFromDetails;
     }
 }

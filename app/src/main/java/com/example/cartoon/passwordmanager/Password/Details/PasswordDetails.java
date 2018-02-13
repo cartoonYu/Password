@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cartoon.passwordmanager.BaseActivity;
 import com.example.cartoon.passwordmanager.Password.Main.Main;
@@ -26,6 +27,8 @@ public class PasswordDetails extends BaseActivity<PasswordDetailsPresenter>
 
     private Intent intent;
     private Password passwordFromLast;
+
+    private static boolean flag;
 
     @Override
     protected PasswordDetailsPresenter initPresent(){
@@ -86,11 +89,17 @@ public class PasswordDetails extends BaseActivity<PasswordDetailsPresenter>
                 confirm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        flag=basePresenter.handleDelete();
+                        if(flag){
+                            intent=new Intent(PasswordDetails.this,Main.class);
+                            startActivity(intent);
+                            finish();
+                        }
                         deletePassword.cancel();
                     }
                 });
                 deletePassword.show();
+
                 break;
             }
         }
@@ -100,5 +109,13 @@ public class PasswordDetails extends BaseActivity<PasswordDetailsPresenter>
         intent=new Intent(this,Main.class);
         startActivity(intent);
         finish();
+    }
+    @Override
+    public void showToast(String code){
+        Toast.makeText(this,code,Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public Password getPassword(){
+        return this.passwordFromLast;
     }
 }
