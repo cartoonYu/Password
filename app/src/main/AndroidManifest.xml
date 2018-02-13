@@ -9,20 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Password.Main.Main">
-
-        </activity>
-        <activity android:name=".Password.AddPassword.AddPassword"></activity>
-        <activity android:name=".PersonalInformation.login.Login">
+        <activity android:name=".Password.Main.Main"
+            android:launchMode="singleTask"/>
+        <activity android:name=".Password.AddPassword.AddPassword"
+            android:launchMode="singleTask"/>
+        <activity android:name=".PersonalInformation.login.Login"
+            android:launchMode="singleTask">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".PersonalInformation.Register.Register"/>
-        <activity android:name=".PersonalInformation.RevampPassword.InformationRevampPassword"/>
-        <activity android:name=".PersonalInformation.RevampQuestion.InformationRevampQuestion"/>
-        <activity android:name=".Password.Details.PasswordDetails"/>
-        <activity android:name=".Password.Revamp.PasswordRevamp"/>
+        <activity android:name=".PersonalInformation.Register.Register"
+            android:launchMode="singleTask"/>
+        <activity android:name=".PersonalInformation.RevampPassword.InformationRevampPassword"
+            android:launchMode="singleTask"/>
+        <activity android:name=".PersonalInformation.RevampQuestion.InformationRevampQuestion"
+            android:launchMode="singleTask"/>
+        <activity android:name=".Password.Details.PasswordDetails"
+            android:launchMode="singleTask"/>
+        <activity android:name=".Password.Revamp.PasswordRevamp"
+            android:launchMode="singleTask"/>
     </application>
 </manifest>
