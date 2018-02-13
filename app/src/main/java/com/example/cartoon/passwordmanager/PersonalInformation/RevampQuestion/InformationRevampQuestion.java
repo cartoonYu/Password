@@ -30,7 +30,7 @@ public class InformationRevampQuestion extends BaseActivity<InformationRevampQue
     }
     @Override
     protected void initView(){
-        back=(TextView)findViewById(R.id.revampQuestionBack);
+        back=(TextView)findViewById(R.id.toolbarBack);
         question=(EditText)findViewById(R.id.revampQuestionQuestion);
         answer=(EditText)findViewById(R.id.revampQuestionAnswer);
         confirm=(TextView)findViewById(R.id.revampQuestionConfirm);
@@ -55,7 +55,7 @@ public class InformationRevampQuestion extends BaseActivity<InformationRevampQue
     @Override
     public void onClick(View view){
         switch (view.getId()){
-            case R.id.revampQuestionBack:{
+            case R.id.toolbarBack:{
                 Intent intent=new Intent(this,Main.class);
                 startActivity(intent);
                 finish();

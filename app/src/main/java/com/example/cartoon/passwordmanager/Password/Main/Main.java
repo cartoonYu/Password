@@ -23,12 +23,17 @@ import com.example.cartoon.passwordmanager.util.Main.MainAdapter;
 
 public class Main extends BaseActivity<MainPresenter> implements IMainContract.View,View.OnClickListener{
 
-    private RecyclerView recyclerView;
-    private DrawerLayout drawerLayout;
     private TextView openDrawerLayout;
+    private TextView tag;
+
+    private RecyclerView recyclerView;
+
+    private FloatingActionButton addPassword;
+
+    private DrawerLayout drawerLayout;
     private TextView revampQuestion;
     private TextView revampPassword;
-    private FloatingActionButton addPassword;
+
 
     private MainAdapter adapter;
     private LinearLayoutManager manager;
@@ -44,11 +49,14 @@ public class Main extends BaseActivity<MainPresenter> implements IMainContract.V
     @Override
     protected void initView(){
         drawerLayout=(DrawerLayout)findViewById(R.id.mainDrawerLayout);
-        openDrawerLayout=(TextView)findViewById(R.id.mainOpenDL);
+        tag=(TextView)findViewById(R.id.toolbarTag);
+        openDrawerLayout=(TextView)findViewById(R.id.toolbarBack);
         revampQuestion=(TextView)findViewById(R.id.mainRevampQuestion);
         revampPassword=(TextView)findViewById(R.id.mainRevampPassword);
         recyclerView=(RecyclerView)findViewById(R.id.mainPassword);
         addPassword=(FloatingActionButton)findViewById(R.id.mainAddPassword);
+        openDrawerLayout.setBackground(getResources().getDrawable(R.drawable.ic_menu));
+        tag.setText("密码管理器");
     }
     @Override
     protected void onPrepare(){
@@ -72,7 +80,7 @@ public class Main extends BaseActivity<MainPresenter> implements IMainContract.V
     @Override
     public void onClick(View view){
         switch (view.getId()){
-            case R.id.mainOpenDL:{
+            case R.id.toolbarBack:{
                 drawerLayout.openDrawer(GravityCompat.START);
                 break;
             }

@@ -38,7 +38,7 @@ public class InformationRevampPassword extends BaseActivity<InformationRevampPas
     }
     @Override
     public void initView(){
-        back=(TextView)findViewById(R.id.revampPasswordBack) ;
+        back=(TextView)findViewById(R.id.toolbarBack) ;
         question=(TextView) findViewById(R.id.revampPasswordQuestion);
         answer=(EditText)findViewById(R.id.revampPasswordAnswer);
         password=(EditText)findViewById(R.id.revampPasswordPassword);
@@ -59,7 +59,7 @@ public class InformationRevampPassword extends BaseActivity<InformationRevampPas
     @Override
     public void onClick(View view){
         switch (view.getId()){
-            case R.id.revampPasswordBack:{
+            case R.id.toolbarBack:{
                 Intent intent;
                 if(flag==0){
                     intent=new Intent(this, Login.class);

@@ -53,7 +53,7 @@ public class AddPassword extends BaseActivity<AddPasswordPresenter> implements I
 
     @Override
     protected void initView() {
-        back=(TextView)findViewById(R.id.newPasswordBack);
+        back=(TextView)findViewById(R.id.toolbarBack);
         decription=(EditText)findViewById(R.id.newPasswordDescription);
         account=(EditText)findViewById(R.id.newPasswordAccount);
         password=(EditText)findViewById(R.id.newPasswordPassword);
@@ -68,7 +68,7 @@ public class AddPassword extends BaseActivity<AddPasswordPresenter> implements I
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.newPasswordBack:{
+            case R.id.toolbarBack:{
                 Intent intent=new Intent(this, Main.class);
                 startActivity(intent);
                 finish();
