@@ -25,6 +25,8 @@ public class Login extends BaseActivity<LoginPresenter> implements ILoginContrac
 
     @Override
     protected LoginPresenter initPresent(){
+        MyDatabaseHelper helper=new MyDatabaseHelper(this,"PasswordManager.db",null,1);
+        helper.getWritableDatabase();
         return new LoginPresenter(this);
     }
     @Override
@@ -53,8 +55,6 @@ public class Login extends BaseActivity<LoginPresenter> implements ILoginContrac
         inputPassword[9]=(Button)findViewById(R.id.loginInputPassword9);
         inputPassword[10]=(Button)findViewById(R.id.loginInputPasswordForgetPassword);
         inputPassword[11]=(Button)findViewById(R.id.loginInputPasswordDeletePassword);
-        MyDatabaseHelper helper=new MyDatabaseHelper(this,"PasswordManager.db",null,1);
-        helper.getWritableDatabase();
     }
     @Override
     protected void onPrepare(){
