@@ -16,10 +16,13 @@ import com.example.cartoon.passwordmanager.PersonalInformation.login.Login;
  */
 
 public class Register extends BaseActivity<RegisterPresenter> implements IRegisterContract.View, View.OnClickListener{
+
+    private TextView back;
+    private TextView confirm;
+
     private EditText inputQuestion;
     private EditText inputAnswer;
     private EditText inputPassword;
-    private TextView confirm;
 
     private String question;
     private String answer;
@@ -40,10 +43,12 @@ public class Register extends BaseActivity<RegisterPresenter> implements IRegist
     }
     @Override
     public void initView(){
+        back=(TextView)findViewById(R.id.toolbarBack);
         inputAnswer=(EditText)findViewById(R.id.registerAnswer);
         inputQuestion=(EditText)findViewById(R.id.registerQuestion);
         inputPassword=(EditText)findViewById(R.id.registerPassword);
-        confirm=(TextView)findViewById(R.id.registerConfirm);
+        confirm=(TextView)findViewById(R.id.toolbarTool1);
+        confirm.setText("确认");
     }
     @Override
     public void onPrepare(){
@@ -52,12 +57,19 @@ public class Register extends BaseActivity<RegisterPresenter> implements IRegist
         question="";
         answer="";
         password="";
+        back.setOnClickListener(this);
         confirm.setOnClickListener(this);
     }
     @Override
     public void onClick(View v){
         switch (v.getId()){
-            case R.id.registerConfirm:{
+            case R.id.toolbarBack:{
+                Intent intent=new Intent(this, Login.class);
+                startActivity(intent);
+                finish();
+                break;
+            }
+            case R.id.toolbarTool1:{
                 question=inputQuestion.getText().toString();
                 answer=inputAnswer.getText().toString();
                 password=inputPassword.getText().toString();

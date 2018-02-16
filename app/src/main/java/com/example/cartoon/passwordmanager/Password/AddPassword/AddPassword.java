@@ -57,7 +57,8 @@ public class AddPassword extends BaseActivity<AddPasswordPresenter> implements I
         decription=(EditText)findViewById(R.id.newPasswordDescription);
         account=(EditText)findViewById(R.id.newPasswordAccount);
         password=(EditText)findViewById(R.id.newPasswordPassword);
-        confirm=(TextView)findViewById(R.id.newPasswordConfirm);
+        confirm=(TextView)findViewById(R.id.toolbarTool1);
+        confirm.setText("保存");
     }
 
     @Override
@@ -74,7 +75,7 @@ public class AddPassword extends BaseActivity<AddPasswordPresenter> implements I
                 finish();
                 break;
             }
-            case R.id.newPasswordConfirm:{
+            case R.id.toolbarTool1:{
                 basePresenter.addPassword();
                 Intent intent=new Intent(this, Main.class);
                 startActivity(intent);

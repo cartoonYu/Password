@@ -40,7 +40,7 @@ public class PasswordDetails extends BaseActivity<PasswordDetailsPresenter>
     }
     @Override
     protected void initView(){
-        back=(TextView)findViewById(R.id.passwordDetailsBack);
+        back=(TextView)findViewById(R.id.toolbarBack);
         account=(TextView)findViewById(R.id.passwordDetailsAccount);
         password=(TextView)findViewById(R.id.passwordDetailsPassword);
         revamp=(TextView)findViewById(R.id.passwordDetailsRevamp);
@@ -58,7 +58,7 @@ public class PasswordDetails extends BaseActivity<PasswordDetailsPresenter>
     @Override
     public void onClick(View v){
         switch (v.getId()){
-            case R.id.passwordDetailsBack:{
+            case R.id.toolbarBack:{
                 intent=new Intent(this,Main.class);
                 intent.putExtra("dataFromDetails",passwordFromLast);
                 startActivity(intent);

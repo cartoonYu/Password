@@ -42,7 +42,8 @@ public class InformationRevampPassword extends BaseActivity<InformationRevampPas
         question=(TextView) findViewById(R.id.revampPasswordQuestion);
         answer=(EditText)findViewById(R.id.revampPasswordAnswer);
         password=(EditText)findViewById(R.id.revampPasswordPassword);
-        confirm=(TextView)findViewById(R.id.revampPasswordConfirm);
+        confirm=(TextView)findViewById(R.id.toolbarTool1);
+        confirm.setText("确定");
         basePresenter.initData();
     }
     @Override
@@ -75,7 +76,7 @@ public class InformationRevampPassword extends BaseActivity<InformationRevampPas
                 }
                 break;
             }
-            case R.id.revampPasswordConfirm:{
+            case R.id.toolbarTool1:{
                 boolean flag=basePresenter.getInput();
                 Intent intent;
                 if(flag){

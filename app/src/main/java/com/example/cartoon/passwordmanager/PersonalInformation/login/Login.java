@@ -1,6 +1,7 @@
 package com.example.cartoon.passwordmanager.PersonalInformation.login;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;

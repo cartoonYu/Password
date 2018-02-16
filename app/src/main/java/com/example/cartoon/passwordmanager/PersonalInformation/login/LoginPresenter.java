@@ -1,6 +1,8 @@
 package com.example.cartoon.passwordmanager.PersonalInformation.login;
 
 
+import android.util.Log;
+
 import com.example.cartoon.passwordmanager.BasePresenter;
 import com.example.cartoon.passwordmanager.ValueCallBack;
 import com.example.cartoon.passwordmanager.data.TablePersonalInformation.HandleInformation;

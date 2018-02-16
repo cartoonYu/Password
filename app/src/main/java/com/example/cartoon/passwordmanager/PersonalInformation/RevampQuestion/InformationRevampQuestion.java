@@ -33,7 +33,8 @@ public class InformationRevampQuestion extends BaseActivity<InformationRevampQue
         back=(TextView)findViewById(R.id.toolbarBack);
         question=(EditText)findViewById(R.id.revampQuestionQuestion);
         answer=(EditText)findViewById(R.id.revampQuestionAnswer);
-        confirm=(TextView)findViewById(R.id.revampQuestionConfirm);
+        confirm=(TextView)findViewById(R.id.toolbarTool1);
+        confirm.setText("确定");
     }
     @Override
     protected void onPrepare(){
@@ -61,7 +62,7 @@ public class InformationRevampQuestion extends BaseActivity<InformationRevampQue
                 finish();
                 break;
             }
-            case R.id.revampQuestionConfirm:{
+            case R.id.toolbarTool1:{
                 boolean flag=basePresenter.getInput();
                 if(flag){
                     Intent intent=new Intent(this,Main.class);

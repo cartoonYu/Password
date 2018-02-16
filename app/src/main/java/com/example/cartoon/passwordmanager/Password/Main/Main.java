@@ -113,4 +113,8 @@ public class Main extends BaseActivity<MainPresenter> implements IMainContract.V
         recyclerView.setAdapter(adapter);
         basePresenter.initData();
     }
+    @Override
+    public void onBackPressed(){
+        finish();
+    }
 }
