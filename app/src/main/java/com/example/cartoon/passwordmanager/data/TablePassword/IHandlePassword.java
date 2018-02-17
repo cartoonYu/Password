@@ -14,5 +14,5 @@ public interface IHandlePassword {
     void handleMain(ValueCallBack<List<Password>> callBack);
     boolean handleAddPassword(ValueCallBack<String> callBack);
     boolean handleUpdatePassword(ValueCallBack<String> callBack);
-    void handleDeletePassword(ValueCallBack<String> callBack);
+    boolean handleDeletePassword(ValueCallBack<String> callBack);
 }

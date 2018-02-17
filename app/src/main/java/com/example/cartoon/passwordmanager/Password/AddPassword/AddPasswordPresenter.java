@@ -22,7 +22,7 @@ public class AddPasswordPresenter extends BasePresenter implements IAddPasswordC
 
     @Override
     public boolean addPassword() {
-        model.setPassword(view.getInputDecription(),view.getInputAccount(),view.getInputPassword());
+        model.setPassword(view.getInputDescription(),view.getInputAccount(),view.getInputPassword());
         boolean flag=model.handleAddPassword(new ValueCallBack<String>() {
             @Override
             public void onSuccess(String s) {

@@ -29,7 +29,7 @@ public class AddPassword extends BaseActivity<AddPasswordPresenter> implements I
 
 
 
-    public String getInputDecription(){
+    public String getInputDescription(){
         inputDecription=decription.getText().toString();
         return inputDecription;
     }

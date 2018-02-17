@@ -7,7 +7,7 @@ package com.example.cartoon.passwordmanager.Password.AddPassword;
 public interface IAddPasswordContract {
     interface View{
         void showToast(String code);
-        String getInputDecription();
+        String getInputDescription();
         String getInputAccount();
         String getInputPassword();
     }

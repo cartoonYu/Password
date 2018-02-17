@@ -77,7 +77,7 @@ public class HandlePassword implements IHandlePassword{
         return this.flag;
     }
     @Override
-    public void handleDeletePassword(ValueCallBack<String> callBack){
+    public boolean handleDeletePassword(ValueCallBack<String> callBack){
         if(this.password.getName().isEmpty()&&
                 this.password.getAccount().isEmpty()&&
                 this.password.getPassword().isEmpty()){
@@ -93,5 +93,6 @@ public class HandlePassword implements IHandlePassword{
         else{
             callBack.onFail("删除失败，请重试");
         }
+        return flag;
     }
 }

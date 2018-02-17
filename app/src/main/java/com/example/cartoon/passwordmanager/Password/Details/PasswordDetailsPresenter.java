@@ -24,19 +24,16 @@ class PasswordDetailsPresenter extends BasePresenter<PasswordDetails> implements
     public boolean handleDelete(){
         model.setPassword(this.view.getPassword().getName(),
                 this.view.getPassword().getAccount(),this.view.getPassword().getPassword());
-        model.handleDeletePassword(new ValueCallBack<String>() {
+        this.flag=model.handleDeletePassword(new ValueCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 view.showToast(s);
-                flag=true;
             }
-
             @Override
             public void onFail(String code) {
                 view.showToast(code);
-                flag=false;
             }
         });
-        return flag;
+        return this.flag;
     }
 }
