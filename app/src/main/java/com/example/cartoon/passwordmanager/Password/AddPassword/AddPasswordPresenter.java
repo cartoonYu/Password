@@ -2,44 +2,38 @@ package com.example.cartoon.passwordmanager.Password.AddPassword;
 
 import com.example.cartoon.passwordmanager.BasePresenter;
 import com.example.cartoon.passwordmanager.ValueCallBack;
-import com.example.cartoon.passwordmanager.data.TablePassword.AddPasswordModel;
-import com.example.cartoon.passwordmanager.data.TablePassword.IPassword;
-import com.example.cartoon.passwordmanager.data.TablePassword.Password;
+import com.example.cartoon.passwordmanager.data.TablePassword.HandlePassword;
+import com.example.cartoon.passwordmanager.data.TablePassword.IHandlePassword;
 
 /**
  * Created by cartoon on 2018/1/29.
  */
 
 public class AddPasswordPresenter extends BasePresenter implements IAddPasswordContract.Presenter{
-    private  IAddPasswordContract.View view;
-    private IPassword.addPasswordModel model;
+    private IAddPasswordContract.View view;
+    private IHandlePassword model;
     public AddPasswordPresenter(IAddPasswordContract.View view){
         this.view=view;
-        this.model=new AddPasswordModel();
+        this.model=new HandlePassword();
     }
-
-    @Override
-    public void savePassword(String name, String account, String password) {
-        model.setPassword(name,account,password);
-    }
-
     @Override
     public void initData() {
     }
 
     @Override
-    public void addPassword() {
-        savePassword(view.getInputDecription(),view.getInputAccount(),view.getInputPassword());
-        model.addPassword(new ValueCallBack.addPasswordCallBack<Password>() {
+    public boolean addPassword() {
+        model.setPassword(view.getInputDecription(),view.getInputAccount(),view.getInputPassword());
+        boolean flag=model.handleAddPassword(new ValueCallBack<String>() {
             @Override
-            public void onSuccess(String code) {
-                   view.showToast(code);
+            public void onSuccess(String s) {
+                view.showToast(s);
             }
 
             @Override
             public void onFail(String code) {
-                    view.showToast(code);
+                view.showToast(code);
             }
         });
+        return flag;
     }
 }

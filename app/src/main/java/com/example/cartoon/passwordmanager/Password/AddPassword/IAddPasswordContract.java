@@ -12,7 +12,6 @@ public interface IAddPasswordContract {
         String getInputPassword();
     }
     interface Presenter{
-        void addPassword();
-        void savePassword(String name,String account,String password);
+        boolean addPassword();
     }
 }

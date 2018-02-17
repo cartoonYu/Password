@@ -25,6 +25,8 @@ public class AddPassword extends BaseActivity<AddPasswordPresenter> implements I
     private String inputAccount;
     private String inputPassword;
 
+    private Intent intent;
+
 
 
     public String getInputDecription(){
@@ -70,16 +72,18 @@ public class AddPassword extends BaseActivity<AddPasswordPresenter> implements I
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.toolbarBack:{
-                Intent intent=new Intent(this, Main.class);
+                this.intent=new Intent(this, Main.class);
                 startActivity(intent);
                 finish();
                 break;
             }
             case R.id.toolbarTool1:{
-                basePresenter.addPassword();
-                Intent intent=new Intent(this, Main.class);
-                startActivity(intent);
-                finish();
+                boolean flag=basePresenter.addPassword();
+                if(flag){
+                    this.intent=new Intent(this, Main.class);
+                    startActivity(intent);
+                    finish();
+                }
                 break;
             }
         }
@@ -91,7 +95,7 @@ public class AddPassword extends BaseActivity<AddPasswordPresenter> implements I
     }
     @Override
     public void onBackPressed(){
-        Intent intent=new Intent(this,Main.class);
+        this.intent=new Intent(this,Main.class);
         startActivity(intent);
         finish();
     }

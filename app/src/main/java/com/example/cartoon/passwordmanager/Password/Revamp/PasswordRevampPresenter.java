@@ -1,10 +1,9 @@
 package com.example.cartoon.passwordmanager.Password.Revamp;
 
-import com.example.cartoon.passwordmanager.BaseActivity;
 import com.example.cartoon.passwordmanager.BasePresenter;
 import com.example.cartoon.passwordmanager.ValueCallBack;
-import com.example.cartoon.passwordmanager.data.TablePassword.IUpdatePasswordModel;
-import com.example.cartoon.passwordmanager.data.TablePassword.UpdatePasswordModel;
+import com.example.cartoon.passwordmanager.data.TablePassword.HandlePassword;
+import com.example.cartoon.passwordmanager.data.TablePassword.IHandlePassword;
 
 /**
  * Created by cartoon on 2018/2/13.
@@ -12,19 +11,20 @@ import com.example.cartoon.passwordmanager.data.TablePassword.UpdatePasswordMode
 
 class PasswordRevampPresenter extends BasePresenter<PasswordRevamp> implements IPasswordRevamp.Presenter{
     private IPasswordRevamp.View view;
-    private IUpdatePasswordModel model;
+    private IHandlePassword model;
     private boolean flag;
     public PasswordRevampPresenter(IPasswordRevamp.View view) {
         this.view=view;
-        this.model=new UpdatePasswordModel();
+        this.model=new HandlePassword();
     }
     @Override
     public void initData(){
     }
     @Override
     public boolean getInput(){
-        model.setPassword(view.getName(),view.getAccount(),view.getPassword(),view.getOldPPassword());
-        model.updatePassword(new ValueCallBack<String>() {
+        this.model.setPassword(view.getName(),view.getAccount(),view.getPassword(),
+                view.getOldPassword());
+        this.model.handleUpdatePassword(new ValueCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 view.showToast(s);
@@ -37,6 +37,6 @@ class PasswordRevampPresenter extends BasePresenter<PasswordRevamp> implements I
                 flag=false;
             }
         });
-        return flag;
+        return this.flag;
     }
 }

@@ -20,6 +20,7 @@ import com.example.cartoon.passwordmanager.data.TablePassword.Password;
 public class PasswordDetails extends BaseActivity<PasswordDetailsPresenter>
         implements IPasswordDetails.View, View.OnClickListener{
     private TextView back;
+    private TextView details;
     private TextView account;
     private TextView password;
     private TextView revamp;
@@ -41,11 +42,13 @@ public class PasswordDetails extends BaseActivity<PasswordDetailsPresenter>
     @Override
     protected void initView(){
         back=(TextView)findViewById(R.id.toolbarBack);
+        details=(TextView)findViewById(R.id.toolbarTag);
         account=(TextView)findViewById(R.id.passwordDetailsAccount);
         password=(TextView)findViewById(R.id.passwordDetailsPassword);
         revamp=(TextView)findViewById(R.id.passwordDetailsRevamp);
         delete=(TextView)findViewById(R.id.passwordDetailsDelete);
         passwordFromLast=(Password)getIntent().getSerializableExtra("data");
+        details.setText(passwordFromLast.getName());
         account.setText(passwordFromLast.getAccount());
         password.setText(passwordFromLast.getPassword());
     }

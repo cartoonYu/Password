@@ -12,7 +12,7 @@ interface IPasswordRevamp {
         String getName();
         String getAccount();
         String getPassword();
-        Password getOldPPassword();
+        Password getOldPassword();
     }
     interface Presenter{
         boolean getInput();

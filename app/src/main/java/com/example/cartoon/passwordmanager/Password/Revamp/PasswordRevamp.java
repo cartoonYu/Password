@@ -102,7 +102,7 @@ public class PasswordRevamp extends BaseActivity<PasswordRevampPresenter>
         return this.password.getText().toString();
     }
     @Override
-    public Password getOldPPassword(){
+    public Password getOldPassword(){
         return passwordFromDetails;
     }
 }

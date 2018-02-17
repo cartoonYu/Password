@@ -2,10 +2,11 @@ package com.example.cartoon.passwordmanager.Password.Main;
 
 import com.example.cartoon.passwordmanager.BasePresenter;
 import com.example.cartoon.passwordmanager.ValueCallBack;
-import com.example.cartoon.passwordmanager.data.TablePassword.GetPasswordModel;
-import com.example.cartoon.passwordmanager.data.TablePassword.IPassword;
+import com.example.cartoon.passwordmanager.data.TablePassword.HandlePassword;
+import com.example.cartoon.passwordmanager.data.TablePassword.IHandlePassword;
 import com.example.cartoon.passwordmanager.data.TablePassword.Password;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,23 +15,26 @@ import java.util.List;
 
 public class MainPresenter extends BasePresenter<Main> implements IMainContract.Presenter{
     private IMainContract.View view;
-    private IPassword.getPasswordModel model;
+    private IHandlePassword model;
+    private List<Password> list;
     public MainPresenter(IMainContract.View view){
         this.view=view;
-        this.model=new GetPasswordModel();
+        this.list=new ArrayList<>();
+        this.model=new HandlePassword();
     }
     @Override
     public List<Password> getAdapterData(){
-        return model.getAdapterData();
+        return list;
     }
     @Override
     public void initData(){
-        model.getAdapterData(new ValueCallBack.PasswordListCallBack<List<Password>>() {
+        model.handleMain(new ValueCallBack<List<Password>>() {
             @Override
             public void onSuccess(List<Password> passwords) {
-                model.getAdapterData().addAll(passwords);
+                list.addAll(passwords);
                 view.refreshAdapter();
             }
+
             @Override
             public void onFail(String code) {
                 view.showToast(code);
