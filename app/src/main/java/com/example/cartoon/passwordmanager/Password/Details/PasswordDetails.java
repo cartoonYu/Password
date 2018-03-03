@@ -41,12 +41,12 @@ public class PasswordDetails extends BaseActivity<PasswordDetailsPresenter>
     }
     @Override
     protected void initView(){
-        back=(TextView)findViewById(R.id.toolbarBack);
-        details=(TextView)findViewById(R.id.toolbarTag);
-        account=(TextView)findViewById(R.id.passwordDetailsAccount);
-        password=(TextView)findViewById(R.id.passwordDetailsPassword);
-        revamp=(TextView)findViewById(R.id.passwordDetailsRevamp);
-        delete=(TextView)findViewById(R.id.passwordDetailsDelete);
+        back=findViewById(R.id.toolbarBack);
+        details=findViewById(R.id.toolbarTag);
+        account=findViewById(R.id.passwordDetailsAccount);
+        password=findViewById(R.id.passwordDetailsPassword);
+        revamp=findViewById(R.id.passwordDetailsRevamp);
+        delete=findViewById(R.id.passwordDetailsDelete);
         passwordFromLast=(Password)getIntent().getSerializableExtra("data");
         details.setText(passwordFromLast.getName());
         account.setText(passwordFromLast.getAccount());

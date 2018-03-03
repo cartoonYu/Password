@@ -39,11 +39,11 @@ public class PasswordRevamp extends BaseActivity<PasswordRevampPresenter>
     @Override
     protected void initView(){
         passwordFromDetails=(Password)getIntent().getSerializableExtra("dataFromDetails");
-        back=(TextView)findViewById(R.id.toolbarBack);
-        save=(TextView)findViewById(R.id.toolbarTool1);
-        name=(EditText)findViewById(R.id.passwordRevampName);
-        account=(EditText)findViewById(R.id.passwordRevampAccount);
-        password=(EditText)findViewById(R.id.passwordRevampPassword);
+        back=findViewById(R.id.toolbarBack);
+        save=findViewById(R.id.toolbarTool1);
+        name=findViewById(R.id.passwordRevampName);
+        account=findViewById(R.id.passwordRevampAccount);
+        password=findViewById(R.id.passwordRevampPassword);
         save.setText("保存");
         name.setText(passwordFromDetails.getName());
         account.setText(passwordFromDetails.getAccount());

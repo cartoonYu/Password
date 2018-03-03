@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="loginInputPasswordPressColor">#BEBEBE</color>
     <color name="loginInputPasswordUnPressColor">#FFFFFF</color>
+    <color name="toolbar">#7B7B7B</color>
 </resources>

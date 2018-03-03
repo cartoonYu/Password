@@ -27,9 +27,6 @@ public class LoginPresenter extends BasePresenter<Login> implements ILoginContra
         this.flag=0;
     }
     @Override
-    public void initData(){
-    }
-    @Override
     public void contrastInformation(){
         model.setInformation(password,"","");
         model.handleLogin(new ValueCallBack<String>() {
@@ -64,6 +61,7 @@ public class LoginPresenter extends BasePresenter<Login> implements ILoginContra
         if(flag==6){
             flag=0;
             contrastInformation();
+            this.password="";
         }
     }
     @Override

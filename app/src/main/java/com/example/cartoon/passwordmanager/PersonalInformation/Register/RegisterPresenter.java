@@ -45,9 +45,6 @@ public class RegisterPresenter extends BasePresenter<Register> implements IRegis
         }
     }
     @Override
-    public void initData(){
-    }
-    @Override
     public void getDataFromView(String question,String answer,String password,String passwordForConfirm){
         this.question=question;
         this.password=password;

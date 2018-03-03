@@ -16,5 +16,6 @@ public interface IInformationRevampPasswordContract {
     }
     interface Presenter{
         boolean getInput();
+        void initData();
     }
 }

@@ -38,24 +38,24 @@ public class Login extends BaseActivity<LoginPresenter> implements ILoginContrac
     protected void initView(){
         passwordForShow=new ImageView[6];
         inputPassword=new Button[12];
-        passwordForShow[0]=(ImageView)findViewById(R.id.loginPassword1);
-        passwordForShow[1]=(ImageView)findViewById(R.id.loginPassword2);
-        passwordForShow[2]=(ImageView)findViewById(R.id.loginPassword3);
-        passwordForShow[3]=(ImageView)findViewById(R.id.loginPassword4);
-        passwordForShow[4]=(ImageView)findViewById(R.id.loginPassword5);
-        passwordForShow[5]=(ImageView)findViewById(R.id.loginPassword6);
-        inputPassword[0]=(Button)findViewById(R.id.loginInputPassword0);
-        inputPassword[1]=(Button)findViewById(R.id.loginInputPassword1);
-        inputPassword[2]=(Button)findViewById(R.id.loginInputPassword2);
-        inputPassword[3]=(Button)findViewById(R.id.loginInputPassword3);
-        inputPassword[4]=(Button)findViewById(R.id.loginInputPassword4);
-        inputPassword[5]=(Button)findViewById(R.id.loginInputPassword5);
-        inputPassword[6]=(Button)findViewById(R.id.loginInputPassword6);
-        inputPassword[7]=(Button)findViewById(R.id.loginInputPassword7);
-        inputPassword[8]=(Button)findViewById(R.id.loginInputPassword8);
-        inputPassword[9]=(Button)findViewById(R.id.loginInputPassword9);
-        inputPassword[10]=(Button)findViewById(R.id.loginInputPasswordForgetPassword);
-        inputPassword[11]=(Button)findViewById(R.id.loginInputPasswordDeletePassword);
+        passwordForShow[0]=findViewById(R.id.loginPassword1);
+        passwordForShow[1]=findViewById(R.id.loginPassword2);
+        passwordForShow[2]=findViewById(R.id.loginPassword3);
+        passwordForShow[3]=findViewById(R.id.loginPassword4);
+        passwordForShow[4]=findViewById(R.id.loginPassword5);
+        passwordForShow[5]=findViewById(R.id.loginPassword6);
+        inputPassword[0]=findViewById(R.id.loginInputPassword0);
+        inputPassword[1]=findViewById(R.id.loginInputPassword1);
+        inputPassword[2]=findViewById(R.id.loginInputPassword2);
+        inputPassword[3]=findViewById(R.id.loginInputPassword3);
+        inputPassword[4]=findViewById(R.id.loginInputPassword4);
+        inputPassword[5]=findViewById(R.id.loginInputPassword5);
+        inputPassword[6]=findViewById(R.id.loginInputPassword6);
+        inputPassword[7]=findViewById(R.id.loginInputPassword7);
+        inputPassword[8]=findViewById(R.id.loginInputPassword8);
+        inputPassword[9]=findViewById(R.id.loginInputPassword9);
+        inputPassword[10]=findViewById(R.id.loginInputPasswordForgetPassword);
+        inputPassword[11]=findViewById(R.id.loginInputPasswordDeletePassword);
     }
     @Override
     protected void onPrepare(){

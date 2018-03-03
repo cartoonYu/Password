@@ -19,9 +19,6 @@ class InformationRevampQuestionPresenter extends BasePresenter<InformationRevamp
         this.model=new HandleInformation();
     }
     @Override
-    public void initData(){
-    }
-    @Override
     public boolean getInput(){
         model.setInformation("",view.getInputQuestion(),view.getInputAnswer());
         model.handleRevampQuestion(new ValueCallBack<String>() {

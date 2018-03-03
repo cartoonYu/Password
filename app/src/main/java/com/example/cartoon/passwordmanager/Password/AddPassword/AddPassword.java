@@ -55,11 +55,11 @@ public class AddPassword extends BaseActivity<AddPasswordPresenter> implements I
 
     @Override
     protected void initView() {
-        back=(TextView)findViewById(R.id.toolbarBack);
-        decription=(EditText)findViewById(R.id.newPasswordDescription);
-        account=(EditText)findViewById(R.id.newPasswordAccount);
-        password=(EditText)findViewById(R.id.newPasswordPassword);
-        confirm=(TextView)findViewById(R.id.toolbarTool1);
+        back=findViewById(R.id.toolbarBack);
+        decription=findViewById(R.id.newPasswordDescription);
+        account=findViewById(R.id.newPasswordAccount);
+        password=findViewById(R.id.newPasswordPassword);
+        confirm=findViewById(R.id.toolbarTool1);
         confirm.setText("保存");
     }
 

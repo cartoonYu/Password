@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface IMainContract {
     interface Presenter {
+        void initData();
         List<Password> getAdapterData();
     }
     interface View {

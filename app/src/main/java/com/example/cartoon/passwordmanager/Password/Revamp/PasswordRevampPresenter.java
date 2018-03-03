@@ -18,9 +18,6 @@ class PasswordRevampPresenter extends BasePresenter<PasswordRevamp> implements I
         this.model=new HandlePassword();
     }
     @Override
-    public void initData(){
-    }
-    @Override
     public boolean getInput(){
         this.model.setPassword(view.getName(),view.getAccount(),view.getPassword(),
                 view.getOldPassword());

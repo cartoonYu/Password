@@ -43,11 +43,11 @@ public class Register extends BaseActivity<RegisterPresenter> implements IRegist
     }
     @Override
     public void initView(){
-        back=(TextView)findViewById(R.id.toolbarBack);
-        inputAnswer=(EditText)findViewById(R.id.registerAnswer);
-        inputQuestion=(EditText)findViewById(R.id.registerQuestion);
-        inputPassword=(EditText)findViewById(R.id.registerPassword);
-        confirm=(TextView)findViewById(R.id.toolbarTool1);
+        back=findViewById(R.id.toolbarBack);
+        inputAnswer=findViewById(R.id.registerAnswer);
+        inputQuestion=findViewById(R.id.registerQuestion);
+        inputPassword=findViewById(R.id.registerPassword);
+        confirm=findViewById(R.id.toolbarTool1);
         confirm.setText("确认");
     }
     @Override

@@ -7,6 +7,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,10 +24,11 @@ import com.example.cartoon.passwordmanager.util.Main.MainAdapter;
 
 public class Main extends BaseActivity<MainPresenter> implements IMainContract.View,View.OnClickListener{
 
-    private TextView openDrawerLayout;
+    private TextView back;
     private TextView tag;
 
     private RecyclerView recyclerView;
+    private ImageView menu;
 
     private FloatingActionButton addPassword;
 
@@ -48,20 +50,21 @@ public class Main extends BaseActivity<MainPresenter> implements IMainContract.V
     }
     @Override
     protected void initView(){
-        drawerLayout=(DrawerLayout)findViewById(R.id.mainDrawerLayout);
-        tag=(TextView)findViewById(R.id.toolbarTag);
-        openDrawerLayout=(TextView)findViewById(R.id.toolbarBack);
-        revampQuestion=(TextView)findViewById(R.id.mainRevampQuestion);
-        revampPassword=(TextView)findViewById(R.id.mainRevampPassword);
-        recyclerView=(RecyclerView)findViewById(R.id.mainPassword);
-        addPassword=(FloatingActionButton)findViewById(R.id.mainAddPassword);
-        openDrawerLayout.setBackground(getResources().getDrawable(R.drawable.ic_menu));
+        drawerLayout=findViewById(R.id.mainDrawerLayout);
+        tag=findViewById(R.id.toolbarTag);
+        back=findViewById(R.id.toolbarBack);
+        menu=findViewById(R.id.mainMenu);
+        revampQuestion=findViewById(R.id.mainRevampQuestion);
+        revampPassword=findViewById(R.id.mainRevampPassword);
+        recyclerView=findViewById(R.id.mainPassword);
+        addPassword=findViewById(R.id.mainAddPassword);
+        back.setBackground(getResources().getDrawable(R.color.toolbar));
         tag.setText("密码管理器");
     }
     @Override
     protected void onPrepare(){
         initRecyclerView();
-        openDrawerLayout.setOnClickListener(this);
+        menu.setOnClickListener(this);
         revampQuestion.setOnClickListener(this);
         revampPassword.setOnClickListener(this);
         addPassword.setOnClickListener(this);
@@ -80,8 +83,8 @@ public class Main extends BaseActivity<MainPresenter> implements IMainContract.V
     @Override
     public void onClick(View view){
         switch (view.getId()){
-            case R.id.toolbarBack:{
-                drawerLayout.openDrawer(GravityCompat.START);
+            case R.id.mainMenu:{
+                drawerLayout.openDrawer(GravityCompat.END);
                 break;
             }
             case R.id.mainAddPassword:{

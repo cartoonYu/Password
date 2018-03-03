@@ -7,5 +7,4 @@ import com.example.cartoon.passwordmanager.BaseActivity;
  */
 
 public abstract class BasePresenter<T extends BaseActivity>{
-    public abstract void initData();
 }

@@ -30,10 +30,10 @@ public class InformationRevampQuestion extends BaseActivity<InformationRevampQue
     }
     @Override
     protected void initView(){
-        back=(TextView)findViewById(R.id.toolbarBack);
-        question=(EditText)findViewById(R.id.revampQuestionQuestion);
-        answer=(EditText)findViewById(R.id.revampQuestionAnswer);
-        confirm=(TextView)findViewById(R.id.toolbarTool1);
+        back=findViewById(R.id.toolbarBack);
+        question=findViewById(R.id.revampQuestionQuestion);
+        answer=findViewById(R.id.revampQuestionAnswer);
+        confirm=findViewById(R.id.toolbarTool1);
         confirm.setText("确定");
     }
     @Override

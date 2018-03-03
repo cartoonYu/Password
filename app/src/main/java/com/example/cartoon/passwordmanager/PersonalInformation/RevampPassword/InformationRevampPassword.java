@@ -38,11 +38,11 @@ public class InformationRevampPassword extends BaseActivity<InformationRevampPas
     }
     @Override
     public void initView(){
-        back=(TextView)findViewById(R.id.toolbarBack) ;
-        question=(TextView) findViewById(R.id.revampPasswordQuestion);
-        answer=(EditText)findViewById(R.id.revampPasswordAnswer);
-        password=(EditText)findViewById(R.id.revampPasswordPassword);
-        confirm=(TextView)findViewById(R.id.toolbarTool1);
+        back=findViewById(R.id.toolbarBack) ;
+        question=findViewById(R.id.revampPasswordQuestion);
+        answer=findViewById(R.id.revampPasswordAnswer);
+        password=findViewById(R.id.revampPasswordPassword);
+        confirm=findViewById(R.id.toolbarTool1);
         confirm.setText("确定");
         basePresenter.initData();
     }

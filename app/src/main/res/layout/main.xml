@@ -6,62 +6,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/mainDrawerLayout">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
         <include layout="@layout/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:id="@+id/mainToolbar"/>
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="12.3"
+            android:layout_height="match_parent"
+            android:layout_below="@id/mainToolbar"
             android:id="@+id/mainPassword"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
+            android:paddingTop="1dp"
+            android:paddingLeft="1dp"
+            android:paddingRight="-2dp"
+            android:paddingBottom="0.5dp"
+            android:src="@drawable/arrow"
+            android:background="#DCDCDC"
+            android:id="@+id/mainMenu"/>
         <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="25dp"
             android:background="#FFFF"
             app:elevation="8dp"
             app:backgroundTint="#FFF"
             app:rippleColor="#7ae3f9"
             android:src="@drawable/releasefloatactionbutton"
             android:id="@+id/mainAddPassword"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="#FFFF"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center"
+        android:padding="15dp"
+        android:background="#FFFFFF">
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginLeft="55dp"
-            android:layout_marginRight="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="修改密保"
             android:textSize="20sp"
             android:id="@+id/mainRevampQuestion"/>
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginLeft="55dp"
-            android:layout_marginRight="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mainRevampQuestion"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
             android:text="修改密码"
             android:textSize="20sp"
             android:id="@+id/mainRevampPassword"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"/>
-    </LinearLayout>
+    </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>
