@@ -2,8 +2,15 @@ package com.example.cartoon.passwordmanager.Password.Details;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +36,12 @@ public class PasswordDetails extends BaseActivity<PasswordDetailsPresenter>
     private Intent intent;
     private Password passwordFromLast;
 
-    private static boolean flag;
+    private PopupWindow popupWindow;
+    // 声明PopupWindow对应的视图
+    private View popupView;
+
+    // 声明平移动画
+    private TranslateAnimation animation;
 
     @Override
     protected PasswordDetailsPresenter initPresent(){
@@ -90,27 +102,42 @@ public class PasswordDetails extends BaseActivity<PasswordDetailsPresenter>
     }
     @Override
     public void handleClickDelete(){
-        final LayoutInflater inflater=LayoutInflater.from(this);
-        final View view=inflater.inflate(R.layout.passworddetailsdelete,null);
-        final TextView cancel=(TextView)view.findViewById(R.id.passwordDetailsDeleteCancel);
-        final TextView confirm=(TextView)view.findViewById(R.id.passwordDetailsDeleteConfirm);
-        final AlertDialog deletePassword=new AlertDialog.Builder(this).create();
-        deletePassword.setView(view);
-        deletePassword.setCancelable(true);
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deletePassword.cancel();
-            }
-        });
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                basePresenter.handleDelete();
-                deletePassword.cancel();
-            }
-        });
-        deletePassword.show();
+        if(popupWindow==null){
+            popupView=View.inflate(this,R.layout.passworddetailsdelete,null);
+            popupWindow=new PopupWindow(popupView,
+                    WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+            popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                @Override
+                public void onDismiss() {
+                }
+            });
+            popupWindow.setBackgroundDrawable(new BitmapDrawable());
+            popupWindow.setFocusable(true);
+            popupWindow.setOutsideTouchable(true);
+            animation=new TranslateAnimation(Animation.RELATIVE_TO_PARENT,0,
+                    Animation.RELATIVE_TO_PARENT,1);
+            animation.setInterpolator(new AccelerateInterpolator());
+            animation.setDuration(200);
+            popupView.findViewById(R.id.passwordDetailsDeleteConfirm).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    basePresenter.handleDelete();
+                    popupWindow.dismiss();
+                }
+            });
+            popupView.findViewById(R.id.passwordDetailsDeleteCancel).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWindow.dismiss();
+                }
+            });
+        }
+        if(popupWindow.isShowing()){
+            popupWindow.dismiss();
+        }
+        popupWindow.showAtLocation(this.findViewById(R.id.passwordDetails),
+                Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL,0,0);
+        popupView.startAnimation(animation);
     }
     @Override
     public void onBackPressed(){
