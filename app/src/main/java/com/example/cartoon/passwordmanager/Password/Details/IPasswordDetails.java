@@ -8,11 +8,13 @@ import com.example.cartoon.passwordmanager.data.TablePassword.Password;
 
 interface IPasswordDetails {
     interface View{
+        void handleClickBack();
+        void handleClickRevamp();
+        void handleClickDelete();
         void showToast(String code);
         Password getPassword();
-
     }
     interface Presenter{
-        boolean handleDelete();
+        void handleDelete();
     }
 }

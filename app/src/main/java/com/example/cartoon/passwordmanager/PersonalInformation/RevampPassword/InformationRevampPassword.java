@@ -61,45 +61,17 @@ public class InformationRevampPassword extends BaseActivity<InformationRevampPas
     public void onClick(View view){
         switch (view.getId()){
             case R.id.toolbarBack:{
-                Intent intent;
-                if(flag==0){
-                    intent=new Intent(this, Login.class);
-                    startActivity(intent);
-                    finish();
-                }
-                else{
-                    if(flag==1){
-                        intent=new Intent(this, Main.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }
+                handleClickBack();
                 break;
             }
             case R.id.toolbarTool1:{
-                boolean flag=basePresenter.getInput();
-                Intent intent;
-                if(flag){
-                    if(this.flag==0){
-                        intent=new Intent(this, Login.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                    else{
-                        if(this.flag==1){
-                            intent=new Intent(this, Main.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    }
-                }
+                handleClickConfirm();
                 break;
             }
         }
     }
     @Override
-    public void onBackPressed(){
-        Intent intent;
+    public void handleClickBack(){
         if(flag==0){
             intent=new Intent(this, Login.class);
             startActivity(intent);
@@ -112,6 +84,27 @@ public class InformationRevampPassword extends BaseActivity<InformationRevampPas
                 finish();
             }
         }
+    }
+    @Override
+    public void handleClickConfirm(){
+        if(basePresenter.getInput()){
+            if(flag==0){
+                intent=new Intent(this, Login.class);
+                startActivity(intent);
+                finish();
+            }
+            else{
+                if(flag==1){
+                    intent=new Intent(this, Main.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        }
+    }
+    @Override
+    public void onBackPressed(){
+        handleClickBack();
     }
     @Override
     public void initView(PersonalInformation information){

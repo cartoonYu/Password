@@ -23,13 +23,14 @@ public class RegisterPresenter extends BasePresenter<Register> implements IRegis
         this.model=new HandleInformation();
     }
     @Override
-    public int addInformation(){
+    public void addInformation(){
         if(passwordForConfirm.equals(password)){
             model.setInformation(password,question,answer);
             model.addInformation(new ValueCallBack<String>() {
                 @Override
                 public void onSuccess(String code) {
                     view.showToast(code);
+                    view.intentToMain();
                 }
 
                 @Override
@@ -37,11 +38,9 @@ public class RegisterPresenter extends BasePresenter<Register> implements IRegis
                     view.showToast(code);
                 }
             });
-            return 1;
         }
         else{
             view.showToast("两次输入的密码不相符，请重试");
-            return 0;
         }
     }
     @Override

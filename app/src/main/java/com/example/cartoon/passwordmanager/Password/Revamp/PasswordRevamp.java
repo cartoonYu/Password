@@ -59,24 +59,28 @@ public class PasswordRevamp extends BaseActivity<PasswordRevampPresenter>
     public void onClick(View view){
         switch (view.getId()){
             case R.id.toolbarBack:{
-                intent=new Intent(this, PasswordDetails.class);
-                intent.putExtra("data",passwordFromDetails);
-                startActivity(intent);
-                finish();
+                handleClickBack(0);
                 break;
             }
             case R.id.toolbarTool1:{
-                boolean flag=basePresenter.getInput();
-                if(flag){
-                    passwordFromDetails=new Password(getName(),getAccount(),getPassword());
-                    intent=new Intent(this, PasswordDetails.class);
-                    intent.putExtra("data",passwordFromDetails);
-                    startActivity(intent);
-                    finish();
-                }
+                handleClickSave();
                 break;
             }
         }
+    }
+    @Override
+    public void handleClickBack(int flag){
+        if(flag==1){
+            passwordFromDetails=new Password(getName(),getAccount(),getPassword());
+        }
+        intent=new Intent(this, PasswordDetails.class);
+        intent.putExtra("data",passwordFromDetails);
+        startActivity(intent);
+        finish();
+    }
+    @Override
+    public void handleClickSave(){
+        basePresenter.getInput();
     }
     @Override
     public void showToast(String code){
@@ -84,10 +88,7 @@ public class PasswordRevamp extends BaseActivity<PasswordRevampPresenter>
     }
     @Override
     public void onBackPressed(){
-        intent=new Intent(this, PasswordDetails.class);
-        intent.putExtra("data",passwordFromDetails);
-        startActivity(intent);
-        finish();
+        handleClickBack(0);
     }
     @Override
     public String getName(){

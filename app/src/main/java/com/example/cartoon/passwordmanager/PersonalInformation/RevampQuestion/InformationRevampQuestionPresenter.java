@@ -13,27 +13,24 @@ class InformationRevampQuestionPresenter extends BasePresenter<InformationRevamp
     private IInformationRevampQuestion.View view;
     private IHandleInformation model;
 
-    private static boolean flag;
     public InformationRevampQuestionPresenter(IInformationRevampQuestion.View view){
         this.view=view;
         this.model=new HandleInformation();
     }
     @Override
-    public boolean getInput(){
+    public void getInput(){
         model.setInformation("",view.getInputQuestion(),view.getInputAnswer());
         model.handleRevampQuestion(new ValueCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 view.showToast(s);
-                flag=true;
+                view.intentToMain();
             }
 
             @Override
             public void onFail(String code) {
                 view.showToast(code);
-                flag=false;
             }
         });
-        return flag;
     }
 }

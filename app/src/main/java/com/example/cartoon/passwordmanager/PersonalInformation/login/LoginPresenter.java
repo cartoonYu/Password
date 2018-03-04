@@ -13,12 +13,12 @@ import com.example.cartoon.passwordmanager.data.TablePersonalInformation.IHandle
  */
 
 public class LoginPresenter extends BasePresenter<Login> implements ILoginContract.Presenter{
+
     private ILoginContract.View view;
     private IHandleInformation model;
 
     private String password;
     private static int flag;
-    private static int intentFlag;
 
     public LoginPresenter(ILoginContract.View view){
         this.view=view;
@@ -33,13 +33,13 @@ public class LoginPresenter extends BasePresenter<Login> implements ILoginContra
             @Override
             public void onSuccess(String s) {
                 view.showToast(s);
-                intentFlag=2;
+                view.intentToMain();
             }
 
             @Override
             public void onFail(String code) {
                 view.showToast(code);
-                intentFlag=1;
+                view.intentToRegister(password);
             }
         });
     }
@@ -61,19 +61,10 @@ public class LoginPresenter extends BasePresenter<Login> implements ILoginContra
         if(flag==6){
             flag=0;
             contrastInformation();
-            this.password="";
         }
     }
     @Override
     public int changeView(){
         return flag;
-    }
-    @Override
-    public int intentView() {
-        return intentFlag;
-    }
-    @Override
-    public String returnPassword(){
-        return this.password;
     }
 }

@@ -7,10 +7,11 @@ package com.example.cartoon.passwordmanager.PersonalInformation.RevampQuestion;
 interface IInformationRevampQuestion {
     interface View{
         void showToast(String code);
+        void intentToMain();
         String getInputQuestion();
         String getInputAnswer();
     }
     interface Presenter{
-        boolean getInput();
+        void getInput();
     }
 }

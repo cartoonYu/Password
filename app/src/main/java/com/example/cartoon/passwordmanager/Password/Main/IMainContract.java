@@ -9,13 +9,16 @@ import java.util.List;
  */
 
 public interface IMainContract {
+    interface View {
+        void handleClickMenu();
+        void handleClickAddPassword();
+        void handleClickRevampQuestion();
+        void handleClickRevampPassword();
+        void showToast(String code);
+        void refreshAdapter();
+    }
     interface Presenter {
         void initData();
         List<Password> getAdapterData();
-    }
-    interface View {
-        void showToast(String code);
-        void refreshAdapter();
-        void onEmpty();
     }
 }

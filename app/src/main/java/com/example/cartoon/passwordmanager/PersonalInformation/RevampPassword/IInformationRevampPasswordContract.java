@@ -8,6 +8,8 @@ import com.example.cartoon.passwordmanager.data.TablePersonalInformation.Persona
 
 public interface IInformationRevampPasswordContract {
     interface View{
+        void handleClickBack();
+        void handleClickConfirm();
         void showToast(String code);
         void initView(PersonalInformation information);
         String getAnswer();

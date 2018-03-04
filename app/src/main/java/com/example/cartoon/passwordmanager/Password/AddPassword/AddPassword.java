@@ -72,31 +72,31 @@ public class AddPassword extends BaseActivity<AddPasswordPresenter> implements I
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.toolbarBack:{
-                this.intent=new Intent(this, Main.class);
-                startActivity(intent);
-                finish();
+                handleClickBack();
                 break;
             }
             case R.id.toolbarTool1:{
-                boolean flag=basePresenter.addPassword();
-                if(flag){
-                    this.intent=new Intent(this, Main.class);
-                    startActivity(intent);
-                    finish();
-                }
+                handleClickSave();
                 break;
             }
         }
     }
-
+    @Override
+    public void handleClickBack(){
+        intent=new Intent(this,Main.class);
+        startActivity(intent);
+        finish();
+    }
+    @Override
+    public void handleClickSave(){
+        basePresenter.addPassword();
+    }
     @Override
     public void showToast(String code) {
         Toast.makeText(this,code,Toast.LENGTH_SHORT).show();
     }
     @Override
     public void onBackPressed(){
-        this.intent=new Intent(this,Main.class);
-        startActivity(intent);
-        finish();
+        handleClickBack();
     }
 }

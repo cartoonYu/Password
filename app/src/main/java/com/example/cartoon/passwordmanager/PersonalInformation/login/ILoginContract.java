@@ -6,13 +6,14 @@ package com.example.cartoon.passwordmanager.PersonalInformation.login;
 
 public interface ILoginContract {
     interface View{
+        void handleClick(String password);
         void showToast(String code);
+        void intentToMain();
+        void intentToRegister(String password);
     }
     interface Presenter{
         void contrastInformation();
         void getDataFromView(String password);
         int changeView();
-        int intentView();
-        String returnPassword();
     }
 }

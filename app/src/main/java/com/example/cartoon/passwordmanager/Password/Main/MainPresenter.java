@@ -38,7 +38,6 @@ public class MainPresenter extends BasePresenter<Main> implements IMainContract.
             @Override
             public void onFail(String code) {
                 view.showToast(code);
-                view.onEmpty();
             }
         });
     }

@@ -24,6 +24,8 @@ public class Login extends BaseActivity<LoginPresenter> implements ILoginContrac
 
     private static int flag;       //控制显示密码的数量
 
+    private Intent intent;
+
     @Override
     protected LoginPresenter initPresent(){
         MyDatabaseHelper helper=new MyDatabaseHelper(this,"PasswordManager.db",null,1);
@@ -120,8 +122,8 @@ public class Login extends BaseActivity<LoginPresenter> implements ILoginContrac
             }
         }
     }
-    private void handleClick(String password){
-        Intent intent;
+    @Override
+    public void handleClick(String password){
         if(!password.equals("-2")){
             basePresenter.getDataFromView(password);
             flag=basePresenter.changeView();
@@ -138,26 +140,18 @@ public class Login extends BaseActivity<LoginPresenter> implements ILoginContrac
             startActivity(intent);
             finish();
         }
-        switch (basePresenter.intentView()){
-            case 1:{
-                intent=new Intent(this, Register.class);
-                intent.putExtra("passwordFromLogin",basePresenter.returnPassword());
-                startActivity(intent);
-                finish();
-                break;
-            }
-            case 2:{
-                intent=new Intent(this, Main.class);
-                startActivity(intent);
-                finish();
-                break;
-            }
-            case 3:{
-                break;
-            }
-            default:{
-                break;
-            }
-        }
+    }
+    @Override
+    public void intentToMain(){
+        intent=new Intent(this, Main.class);
+        startActivity(intent);
+        finish();
+    }
+    @Override
+    public void intentToRegister(String password){
+        intent=new Intent(this, Register.class);
+        intent.putExtra("passwordFromLogin",password);
+        startActivity(intent);
+        finish();
     }
 }

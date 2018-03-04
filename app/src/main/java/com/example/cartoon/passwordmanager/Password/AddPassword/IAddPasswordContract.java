@@ -6,12 +6,14 @@ package com.example.cartoon.passwordmanager.Password.AddPassword;
 
 public interface IAddPasswordContract {
     interface View{
+        void handleClickBack();
+        void handleClickSave();
         void showToast(String code);
         String getInputDescription();
         String getInputAccount();
         String getInputPassword();
     }
     interface Presenter{
-        boolean addPassword();
+        void addPassword();
     }
 }

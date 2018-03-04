@@ -40,6 +40,8 @@ public class Main extends BaseActivity<MainPresenter> implements IMainContract.V
     private MainAdapter adapter;
     private LinearLayoutManager manager;
 
+    private Intent intent;
+
     @Override
     protected MainPresenter initPresent(){
         return new MainPresenter(this);
@@ -78,36 +80,49 @@ public class Main extends BaseActivity<MainPresenter> implements IMainContract.V
         adapter.notifyDataSetChanged();
     }
     @Override
-    public void onEmpty(){
-    }
-    @Override
     public void onClick(View view){
         switch (view.getId()){
             case R.id.mainMenu:{
-                drawerLayout.openDrawer(GravityCompat.END);
+                handleClickMenu();
                 break;
             }
             case R.id.mainAddPassword:{
-                Intent intent=new Intent(this, AddPassword.class);
-                startActivity(intent);
-                finish();
+                handleClickAddPassword();
                 break;
             }
             case R.id.mainRevampQuestion:{
-                Intent intent=new Intent(this, InformationRevampQuestion.class);
-                intent.putExtra("flag",1);
-                startActivity(intent);
-                finish();
+                handleClickRevampQuestion();
                 break;
             }
             case R.id.mainRevampPassword:{
-                Intent intent=new Intent(this, InformationRevampPassword.class);
-                intent.putExtra("flag",1);
-                startActivity(intent);
-                finish();
+                handleClickRevampPassword();
                 break;
             }
         }
+    }
+    @Override
+    public void handleClickMenu(){
+        drawerLayout.openDrawer(GravityCompat.END);
+    }
+    @Override
+    public void handleClickAddPassword(){
+        intent=new Intent(this, AddPassword.class);
+        startActivity(intent);
+        finish();
+    }
+    @Override
+    public void handleClickRevampQuestion(){
+        intent=new Intent(this, InformationRevampQuestion.class);
+        intent.putExtra("flag",1);
+        startActivity(intent);
+        finish();
+    }
+    @Override
+    public void handleClickRevampPassword(){
+        intent=new Intent(this, InformationRevampPassword.class);
+        intent.putExtra("flag",1);
+        startActivity(intent);
+        finish();
     }
     private void initRecyclerView(){
         adapter=new MainAdapter(this,basePresenter.getAdapterData());

@@ -16,10 +16,15 @@ import com.example.cartoon.passwordmanager.R;
 
 public class InformationRevampQuestion extends BaseActivity<InformationRevampQuestionPresenter>
         implements IInformationRevampQuestion.View, View.OnClickListener{
+
     private TextView back;
+
     private EditText question;
     private EditText answer;
     private TextView confirm;
+
+    private Intent intent;
+
     @Override
     protected int getLayout(){
         return R.layout.revampquestion;
@@ -57,26 +62,23 @@ public class InformationRevampQuestion extends BaseActivity<InformationRevampQue
     public void onClick(View view){
         switch (view.getId()){
             case R.id.toolbarBack:{
-                Intent intent=new Intent(this,Main.class);
-                startActivity(intent);
-                finish();
+                intentToMain();
                 break;
             }
             case R.id.toolbarTool1:{
-                boolean flag=basePresenter.getInput();
-                if(flag){
-                    Intent intent=new Intent(this,Main.class);
-                    startActivity(intent);
-                    finish();
-                }
+                basePresenter.getInput();
                 break;
             }
         }
     }
     @Override
-    public void onBackPressed(){
-        Intent intent=new Intent(this,Main.class);
+    public void intentToMain(){
+        intent=new Intent(this,Main.class);
         startActivity(intent);
         finish();
+    }
+    @Override
+    public void onBackPressed(){
+        intentToMain();
     }
 }

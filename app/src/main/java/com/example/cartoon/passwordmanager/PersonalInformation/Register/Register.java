@@ -28,7 +28,9 @@ public class Register extends BaseActivity<RegisterPresenter> implements IRegist
     private String answer;
     private String password;
 
+    private Intent intent;
     private String passwordFromLogin;    //从login传过来的密码，用于与再次输入的密码进行匹配
+
     @Override
     public void showToast(String code){
         Toast.makeText(this,code,Toast.LENGTH_SHORT).show();
@@ -52,7 +54,7 @@ public class Register extends BaseActivity<RegisterPresenter> implements IRegist
     }
     @Override
     public void onPrepare(){
-        Intent intent=getIntent();
+        intent=getIntent();
         passwordFromLogin=intent.getStringExtra("passwordFromLogin");
         question="";
         answer="";
@@ -64,29 +66,37 @@ public class Register extends BaseActivity<RegisterPresenter> implements IRegist
     public void onClick(View v){
         switch (v.getId()){
             case R.id.toolbarBack:{
-                Intent intent=new Intent(this, Login.class);
-                startActivity(intent);
-                finish();
+                handleClickBack();
                 break;
             }
             case R.id.toolbarTool1:{
-                question=inputQuestion.getText().toString();
-                answer=inputAnswer.getText().toString();
-                password=inputPassword.getText().toString();
-                basePresenter.getDataFromView(question,answer,password,passwordFromLogin);
-                if(basePresenter.addInformation()==1){
-                    Intent intent=new Intent(this,Main.class);
-                    startActivity(intent);
-                    finish();
-                }
+                handleClickSave();
                 break;
             }
         }
     }
     @Override
-    public void onBackPressed(){
-        Intent intent=new Intent(this, Login.class);
+    public void handleClickBack(){
+        intent=new Intent(this, Login.class);
         startActivity(intent);
         finish();
+    }
+    @Override
+    public void handleClickSave(){
+        question=inputQuestion.getText().toString();
+        answer=inputAnswer.getText().toString();
+        password=inputPassword.getText().toString();
+        basePresenter.getDataFromView(question,answer,password,passwordFromLogin);
+        basePresenter.addInformation();
+    }
+    @Override
+    public void intentToMain(){
+        intent=new Intent(this,Main.class);
+        startActivity(intent);
+        finish();
+    }
+    @Override
+    public void onBackPressed(){
+        handleClickBack();
     }
 }

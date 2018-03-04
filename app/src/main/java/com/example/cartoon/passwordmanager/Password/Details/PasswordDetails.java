@@ -62,56 +62,59 @@ public class PasswordDetails extends BaseActivity<PasswordDetailsPresenter>
     public void onClick(View v){
         switch (v.getId()){
             case R.id.toolbarBack:{
-                intent=new Intent(this,Main.class);
-                intent.putExtra("dataFromDetails",passwordFromLast);
-                startActivity(intent);
-                finish();
+                handleClickBack();
                 break;
             }
             case R.id.passwordDetailsRevamp:{
-                intent=new Intent(this,PasswordRevamp.class);
-                intent.putExtra("dataFromDetails",passwordFromLast);
-                startActivity(intent);
-                finish();
+                handleClickRevamp();
                 break;
             }
             case R.id.passwordDetailsDelete:{
-                final LayoutInflater inflater=LayoutInflater.from(this);
-                final View view=inflater.inflate(R.layout.passworddetailsdelete,null);
-                final TextView cancel=(TextView)view.findViewById(R.id.passwordDetailsDeleteCancel);
-                final TextView confirm=(TextView)view.findViewById(R.id.passwordDetailsDeleteConfirm);
-                final AlertDialog deletePassword=new AlertDialog.Builder(this).create();
-                deletePassword.setView(view);
-                deletePassword.setCancelable(true);
-                cancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        deletePassword.cancel();
-                    }
-                });
-                confirm.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        flag=basePresenter.handleDelete();
-                        if(flag){
-                            intent=new Intent(PasswordDetails.this,Main.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                        deletePassword.cancel();
-                    }
-                });
-                deletePassword.show();
-
+                handleClickDelete();
                 break;
             }
         }
     }
     @Override
-    public void onBackPressed(){
+    public void handleClickBack(){
         intent=new Intent(this,Main.class);
         startActivity(intent);
         finish();
+    }
+    @Override
+    public void handleClickRevamp(){
+        intent=new Intent(this,PasswordRevamp.class);
+        intent.putExtra("dataFromDetails",passwordFromLast);
+        startActivity(intent);
+        finish();
+    }
+    @Override
+    public void handleClickDelete(){
+        final LayoutInflater inflater=LayoutInflater.from(this);
+        final View view=inflater.inflate(R.layout.passworddetailsdelete,null);
+        final TextView cancel=(TextView)view.findViewById(R.id.passwordDetailsDeleteCancel);
+        final TextView confirm=(TextView)view.findViewById(R.id.passwordDetailsDeleteConfirm);
+        final AlertDialog deletePassword=new AlertDialog.Builder(this).create();
+        deletePassword.setView(view);
+        deletePassword.setCancelable(true);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deletePassword.cancel();
+            }
+        });
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                basePresenter.handleDelete();
+                deletePassword.cancel();
+            }
+        });
+        deletePassword.show();
+    }
+    @Override
+    public void onBackPressed(){
+        handleClickBack();
     }
     @Override
     public void showToast(String code){

@@ -8,6 +8,8 @@ import com.example.cartoon.passwordmanager.data.TablePassword.Password;
 
 interface IPasswordRevamp {
     interface View{
+        void handleClickBack(int flag);
+        void handleClickSave();
         void showToast(String code);
         String getName();
         String getAccount();
@@ -15,6 +17,6 @@ interface IPasswordRevamp {
         Password getOldPassword();
     }
     interface Presenter{
-        boolean getInput();
+        void getInput();
     }
 }

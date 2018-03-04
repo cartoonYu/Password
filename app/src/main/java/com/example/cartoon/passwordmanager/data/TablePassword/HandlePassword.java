@@ -39,7 +39,7 @@ public class HandlePassword implements IHandlePassword{
         }
     }
     @Override
-    public boolean handleAddPassword(ValueCallBack<String> callBack){
+    public void handleAddPassword(ValueCallBack<String> callBack){
         if(this.password.getName().isEmpty()&&
                 this.password.getAccount().isEmpty()&&
                 this.password.getPassword().isEmpty()){
@@ -55,15 +55,13 @@ public class HandlePassword implements IHandlePassword{
         else{
             callBack.onFail("新增失败，请重试");
         }
-        return this.flag;
     }
     @Override
-    public boolean handleUpdatePassword(ValueCallBack<String> callBack){
+    public void handleUpdatePassword(ValueCallBack<String> callBack){
         if(this.password.getName().isEmpty()&&
                 this.password.getAccount().isEmpty()&&
                 this.password.getPassword().isEmpty()){
             callBack.onFail("你未输入任何信息，请重试");
-            this.flag=false;
         }
         else{
             this.flag=this.getPassword.updatePassword(this.password,oldPassword);
@@ -74,10 +72,9 @@ public class HandlePassword implements IHandlePassword{
         else{
             callBack.onFail("修改失败，请重试");
         }
-        return this.flag;
     }
     @Override
-    public boolean handleDeletePassword(ValueCallBack<String> callBack){
+    public void handleDeletePassword(ValueCallBack<String> callBack){
         if(this.password.getName().isEmpty()&&
                 this.password.getAccount().isEmpty()&&
                 this.password.getPassword().isEmpty()){
@@ -93,6 +90,5 @@ public class HandlePassword implements IHandlePassword{
         else{
             callBack.onFail("删除失败，请重试");
         }
-        return flag;
     }
 }

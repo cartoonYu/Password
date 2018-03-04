@@ -8,10 +8,13 @@ import com.example.cartoon.passwordmanager.data.TablePersonalInformation.Persona
 
 public interface IRegisterContract {
     interface View{
+        void handleClickBack();
+        void handleClickSave();
+        void intentToMain();
         void showToast(String code);
     }
     interface Presenter{
-        int addInformation();
+        void addInformation();
         void getDataFromView(String question,String answer,String password,String passwordForConfirm);
     }
 }

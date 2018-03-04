@@ -12,7 +12,7 @@ public interface IHandlePassword {
     void setPassword(String name,String account,String password);
     void setPassword(String name,String account,String password,Password oldPassword);
     void handleMain(ValueCallBack<List<Password>> callBack);
-    boolean handleAddPassword(ValueCallBack<String> callBack);
-    boolean handleUpdatePassword(ValueCallBack<String> callBack);
-    boolean handleDeletePassword(ValueCallBack<String> callBack);
+    void handleAddPassword(ValueCallBack<String> callBack);
+    void handleUpdatePassword(ValueCallBack<String> callBack);
+    void handleDeletePassword(ValueCallBack<String> callBack);
 }
