@@ -5,6 +5,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 
+import com.example.cartoon.passwordmanager.data.MyDatabaseHelper;
+import com.example.cartoon.passwordmanager.util.PasswordManagerApplication;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,12 +17,13 @@ import java.util.List;
 
 public class GetInformation implements IGetInformation{
 
+    private MyDatabaseHelper helper;
     private SQLiteDatabase db;
     private List<PersonalInformation> list;
     private PersonalInformation information;
     public GetInformation(){
-        this.db= SQLiteDatabase.openOrCreateDatabase
-                ("/data/data/com.example.cartoon.passwordmanager/databases/PasswordManager.db",null);
+        this.helper=new MyDatabaseHelper(PasswordManagerApplication.getContext(),"PasswordManager.db",null,1);
+        this.db= helper.getWritableDatabase();
         this.list=new ArrayList<>();
     }
     @Override

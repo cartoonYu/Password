@@ -6,6 +6,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +18,8 @@ import com.example.cartoon.passwordmanager.R;
 import com.example.cartoon.passwordmanager.PersonalInformation.RevampPassword.InformationRevampPassword;
 import com.example.cartoon.passwordmanager.PersonalInformation.RevampQuestion.InformationRevampQuestion;
 import com.example.cartoon.passwordmanager.util.Main.MainAdapter;
+import com.example.cartoon.passwordmanager.util.PasswordManagerApplication;
+import com.squareup.leakcanary.RefWatcher;
 
 /**
  * Created by cartoon on 2018/1/27.
@@ -124,9 +127,9 @@ public class Main extends BaseActivity<MainPresenter> implements IMainContract.V
         startActivity(intent);
         finish();
     }
-    private void initRecyclerView(){
-        adapter=new MainAdapter(this,basePresenter.getAdapterData());
-        manager=new LinearLayoutManager(this);
+    private void initRecyclerView() {
+        adapter = new MainAdapter(this, basePresenter.getAdapterData());
+        manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
         basePresenter.initData();
@@ -134,5 +137,11 @@ public class Main extends BaseActivity<MainPresenter> implements IMainContract.V
     @Override
     public void onBackPressed(){
         finish();
+    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        RefWatcher watcher= PasswordManagerApplication.getRefWatcher(this);
+        watcher.watch(this);
     }
 }
