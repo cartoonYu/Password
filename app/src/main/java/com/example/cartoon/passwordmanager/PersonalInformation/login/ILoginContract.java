@@ -12,8 +12,6 @@ public interface ILoginContract {
         void intentToRegister(String password);
     }
     interface Presenter{
-        void contrastInformation();
-        void getDataFromView(String password);
-        int changeView();
+        void contrastInformation(String password);
     }
 }

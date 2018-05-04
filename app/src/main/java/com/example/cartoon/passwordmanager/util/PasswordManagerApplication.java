@@ -12,7 +12,6 @@ import com.squareup.leakcanary.RefWatcher;
 
 public class PasswordManagerApplication extends Application{
     private static Context context;
-    private RefWatcher refWatcher;
     @Override
     public void onCreate(){
         super.onCreate();
@@ -21,14 +20,10 @@ public class PasswordManagerApplication extends Application{
             // You should not init your app in this process.
             return;
         }
-        refWatcher=LeakCanary.install(this);
+        LeakCanary.install(this);
         context=getApplicationContext();
     }
     public static Context getContext(){
         return context;
-    }
-    public static RefWatcher getRefWatcher(Context context){
-        PasswordManagerApplication application=(PasswordManagerApplication)context.getApplicationContext();
-        return application.refWatcher;
     }
 }

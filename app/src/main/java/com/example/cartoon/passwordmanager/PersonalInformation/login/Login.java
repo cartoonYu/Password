@@ -1,6 +1,10 @@
 package com.example.cartoon.passwordmanager.PersonalInformation.login;
 
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
+import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,17 +17,19 @@ import com.example.cartoon.passwordmanager.R;
 import com.example.cartoon.passwordmanager.PersonalInformation.Register.Register;
 import com.example.cartoon.passwordmanager.PersonalInformation.RevampPassword.InformationRevampPassword;
 import com.example.cartoon.passwordmanager.data.MyDatabaseHelper;
+import com.example.cartoon.passwordmanager.util.PasswordManagerApplication;
 
 /**
  * Created by cartoon on 2018/1/31.
  */
 
 public class Login extends BaseActivity<LoginPresenter> implements ILoginContract.View, View.OnClickListener{
+
     private ImageView passwordForShow[];
     private Button inputPassword[];
 
-    private static int flag;       //控制显示密码的数量
-
+    private int flag;           //控制输入的密码个数
+    private StringBuilder password;    //最终用户输入的密码
     private Intent intent;
 
     @Override
@@ -61,6 +67,8 @@ public class Login extends BaseActivity<LoginPresenter> implements ILoginContrac
     }
     @Override
     protected void onPrepare(){
+        flag=-1;
+        password=new StringBuilder();
         for(int i=0;i<12;i++){
             inputPassword[i].setOnClickListener(this);
         }
@@ -124,21 +132,25 @@ public class Login extends BaseActivity<LoginPresenter> implements ILoginContrac
     }
     @Override
     public void handleClick(String password){
-        if(!password.equals("-2")){
-            basePresenter.getDataFromView(password);
-            flag=basePresenter.changeView();
-            for(int i=0;i<6;i++){
-                passwordForShow[i].setImageResource(0);
-            }
-            for(int i=0;i<flag;i++){
-                passwordForShow[i].setImageResource(R.drawable.password);
-            }
-        }
-        else{
-            intent=new Intent(this, InformationRevampPassword.class);
-            intent.putExtra("flag",0);
+        if(password.equals("-2")){
+            intent=new Intent(this,InformationRevampPassword.class);
             startActivity(intent);
             finish();
+        }
+        else{
+           if(password.equals("-1")){
+               if(flag!=-1){
+                   this.password.deleteCharAt(flag);
+                   passwordForShow[flag--].setImageResource(0);
+               }
+           }
+           else{
+               this.password.append(password);
+               passwordForShow[++flag].setImageResource(R.drawable.password);
+           }
+        }
+        if(flag==5){
+            basePresenter.contrastInformation(this.password.toString());
         }
     }
     @Override

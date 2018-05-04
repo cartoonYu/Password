@@ -141,7 +141,5 @@ public class Main extends BaseActivity<MainPresenter> implements IMainContract.V
     @Override
     protected void onDestroy(){
         super.onDestroy();
-        RefWatcher watcher= PasswordManagerApplication.getRefWatcher(this);
-        watcher.watch(this);
     }
 }
