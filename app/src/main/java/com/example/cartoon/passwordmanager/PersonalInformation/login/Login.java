@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
@@ -31,6 +32,8 @@ public class Login extends BaseActivity<LoginPresenter> implements ILoginContrac
     private int flag;           //控制输入的密码个数
     private StringBuilder password;    //最终用户输入的密码
     private Intent intent;
+
+    private static final String TAG = "Activity2";
 
     @Override
     protected LoginPresenter initPresent(){
