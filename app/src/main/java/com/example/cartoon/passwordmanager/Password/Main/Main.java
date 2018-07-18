@@ -19,7 +19,6 @@ import com.example.cartoon.passwordmanager.PersonalInformation.RevampPassword.In
 import com.example.cartoon.passwordmanager.PersonalInformation.RevampQuestion.InformationRevampQuestion;
 import com.example.cartoon.passwordmanager.util.Main.MainAdapter;
 import com.example.cartoon.passwordmanager.util.PasswordManagerApplication;
-import com.squareup.leakcanary.RefWatcher;
 
 /**
  * Created by cartoon on 2018/1/27.

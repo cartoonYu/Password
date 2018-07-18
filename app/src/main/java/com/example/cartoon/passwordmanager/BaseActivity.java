@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.example.cartoon.passwordmanager.util.PasswordManagerApplication;
-import com.squareup.leakcanary.LeakCanary;
 
 /**
  * Created by cartoon on 2018/1/27.
